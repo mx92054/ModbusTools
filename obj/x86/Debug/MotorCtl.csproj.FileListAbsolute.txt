@@ -1,0 +1,50 @@
+C:\Users\Administrator\documents\visual studio 2010\Projects\MotorCtl\MotorCtl\bin\Debug\MotorCtl.exe
+C:\Users\Administrator\documents\visual studio 2010\Projects\MotorCtl\MotorCtl\bin\Debug\MotorCtl.pdb
+C:\Users\Administrator\documents\visual studio 2010\Projects\MotorCtl\MotorCtl\bin\Debug\WSMBS.dll
+C:\Users\Administrator\documents\visual studio 2010\Projects\MotorCtl\MotorCtl\bin\Debug\WSMBS.xml
+C:\Users\Administrator\documents\visual studio 2010\Projects\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.frMain.resources
+C:\Users\Administrator\documents\visual studio 2010\Projects\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.Properties.Resources.resources
+C:\Users\Administrator\documents\visual studio 2010\Projects\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.csproj.GenerateResource.Cache
+C:\Users\Administrator\documents\visual studio 2010\Projects\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.exe
+C:\Users\Administrator\documents\visual studio 2010\Projects\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.pdb
+C:\Users\Administrator\documents\visual studio 2010\Projects\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\documents\visual studio 2010\Projects\MotorCtl\MotorCtl\bin\Debug\WSMBT.dll
+C:\Users\Administrator\documents\visual studio 2010\Projects\MotorCtl\MotorCtl\bin\Debug\WSMBT.xml
+E:\Developer\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.exe
+E:\Developer\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.pdb
+E:\Developer\MotorCtl\MotorCtl\bin\Debug\MotorCtl.exe
+E:\Developer\MotorCtl\MotorCtl\bin\Debug\MotorCtl.pdb
+E:\Developer\MotorCtl\MotorCtl\bin\Debug\WSMBS.xml
+E:\Developer\MotorCtl\MotorCtl\bin\Debug\WSMBT.xml
+E:\Developer\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.csprojResolveAssemblyReference.cache
+E:\Developer\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.frMain.resources
+E:\Developer\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.Properties.Resources.resources
+E:\Developer\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.csproj.GenerateResource.Cache
+E:\Developer\CSharp\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.exe
+E:\Developer\CSharp\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.pdb
+E:\Developer\CSharp\MotorCtl\MotorCtl\bin\Debug\MotorCtl.exe
+E:\Developer\CSharp\MotorCtl\MotorCtl\bin\Debug\MotorCtl.pdb
+E:\Developer\CSharp\MotorCtl\MotorCtl\bin\Debug\WSMBS.xml
+E:\Developer\CSharp\MotorCtl\MotorCtl\bin\Debug\WSMBT.xml
+E:\Developer\CSharp\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.csprojResolveAssemblyReference.cache
+E:\Developer\CSharp\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.frMain.resources
+E:\Developer\CSharp\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.Properties.Resources.resources
+E:\Developer\CSharp\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.csproj.GenerateResource.Cache
+E:\SBCProgram\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.exe
+E:\SBCProgram\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.pdb
+E:\SBCProgram\MotorCtl\MotorCtl\bin\Debug\MotorCtl.exe
+E:\SBCProgram\MotorCtl\MotorCtl\bin\Debug\WSMBS.xml
+E:\SBCProgram\MotorCtl\MotorCtl\bin\Debug\WSMBT.xml
+E:\SBCProgram\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.csprojResolveAssemblyReference.cache
+E:\SBCProgram\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.frMain.resources
+E:\SBCProgram\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.Properties.Resources.resources
+E:\SBCProgram\MotorCtl\MotorCtl\obj\x86\Debug\MotorCtl.csproj.GenerateResource.Cache
+E:\SBCProgram\MotorCtl\MotorCtl\bin\Debug\MotorCtl.pdb
+E:\SBCProgram\ModbusTools\MotorCtl\obj\x86\Debug\MotorCtl.exe
+E:\SBCProgram\ModbusTools\MotorCtl\obj\x86\Debug\MotorCtl.pdb
+E:\Developer\ModbusTools\MotorCtl\obj\x86\Debug\MotorCtl.exe
+E:\Developer\ModbusTools\MotorCtl\obj\x86\Debug\MotorCtl.pdb
+E:\Developer\ModbusTools\MotorCtl\obj\x86\Debug\MotorCtl.csprojResolveAssemblyReference.cache
+E:\Developer\ModbusTools\MotorCtl\obj\x86\Debug\MotorCtl.frMain.resources
+E:\Developer\ModbusTools\MotorCtl\obj\x86\Debug\MotorCtl.Properties.Resources.resources
+E:\Developer\ModbusTools\MotorCtl\obj\x86\Debug\MotorCtl.csproj.GenerateResource.Cache

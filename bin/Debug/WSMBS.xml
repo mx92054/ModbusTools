@@ -1,0 +1,1340 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WSMBS</name>
+    </assembly>
+    <members>
+        <member name="T:WSMBS.Result">
+            <summary>This table lists all enumerations defined in Result.</summary>
+             <seealso cref="M:WSMBS.WSMBSControl.GetLastErrorString">GetLastErrorString</seealso>
+        </member>
+        <member name="F:WSMBS.Result.SUCCESS">
+            <summary>0 - No error.</summary>
+        </member>
+        <member name="F:WSMBS.Result.ILLEGAL_FUNCTION">
+            <summary>1 - Illegal function.</summary>
+        </member>
+        <member name="F:WSMBS.Result.ILLEGAL_DATA_ADDRESS">
+            <summary>2 - Illegal data address.</summary>
+        </member>
+        <member name="F:WSMBS.Result.ILLEGAL_DATA_VALUE">
+            <summary>3 - Illegal data value.</summary>
+        </member>
+        <member name="F:WSMBS.Result.SLAVE_DEVICE_FAILURE">
+            <summary>4 - Slave device failure.</summary>
+        </member>
+        <member name="F:WSMBS.Result.ACKNOWLEDGE">
+            <summary>5 - Acknowledge.</summary>
+        </member>
+        <member name="F:WSMBS.Result.SLAVE_DEVICE_BUSY">
+            <summary>6 - Slave device busy.</summary>
+        </member>
+        <member name="F:WSMBS.Result.NEGATIVE_ACKNOWLEDGE">
+            <summary>7 - Negative acknowledge.</summary>
+        </member>
+        <member name="F:WSMBS.Result.MEMORY_PARITY_ERROR">
+            <summary>8 - Memory parity error.</summary>
+        </member>
+        <member name="F:WSMBS.Result.RESPONSE_TIMEOUT">
+            <summary>300 - Response timeout.</summary>
+        </member>
+        <member name="F:WSMBS.Result.ISCLOSED">
+            <summary>301 - Port not open.</summary>
+        </member>
+        <member name="F:WSMBS.Result.CRC">
+            <summary>302 - CRC Error.</summary>
+        </member>
+        <member name="F:WSMBS.Result.RESPONSE">
+            <summary>303 - Not the expected response received.</summary>
+        </member>
+        <member name="F:WSMBS.Result.BYTECOUNT">
+            <summary>304 - Byte count error.</summary>
+        </member>
+        <member name="F:WSMBS.Result.QUANTITY">
+            <summary>305 - Quantity is out of range.</summary>
+        </member>
+        <member name="F:WSMBS.Result.FUNCTION">
+            <summary>306 - Function out of range. 1 - 127.</summary>
+        </member>
+        <member name="F:WSMBS.Result.NOT_AVAILABLE">
+            <summary>400 - Comm port not available or in use by other program.</summary>
+        </member>
+        <member name="F:WSMBS.Result.WRITE">
+            <summary>401 - Write error.</summary>
+        </member>
+        <member name="F:WSMBS.Result.READ">
+            <summary>402 - Read error.</summary>
+        </member>
+        <member name="F:WSMBS.Result.DEMO_TIMEOUT">
+            <summary>1000 - Demo mode expired. Restart your application to continue.</summary>
+        </member>
+        <member name="T:WSMBS.Parity">
+            <summary>
+               Specifies the parity bit for a WSMBS object.
+            </summary>
+        </member>
+        <member name="F:WSMBS.Parity.None">
+            <summary>
+            No parity check occurs.
+            </summary>
+        </member>
+        <member name="F:WSMBS.Parity.Odd">
+            <summary>
+            Sets the parity bit so that the count of bits set is an odd number.
+            </summary>
+        </member>
+        <member name="F:WSMBS.Parity.Even">
+            <summary>
+            Sets the parity bit so that the count of bits set is an even number.
+            </summary>
+        </member>
+        <member name="T:WSMBS.Mode">
+            <summary>
+            Specifies the modbus mode for a WSMBS object.
+            </summary>
+        </member>
+        <member name="F:WSMBS.Mode.RTU">
+            <summary>
+            Modbus RTU Mode.
+            </summary>
+        </member>
+        <member name="F:WSMBS.Mode.ASCII">
+            <summary>
+            Modbus ASCII Mode.
+            </summary>
+        </member>
+        <member name="T:WSMBS.WSMBSControl">
+             <summary>
+             WSMBS Modbus Master RTU/ASCII .NET control.
+             </summary>
+            
+             WARNING: If you change the name of this class, you will need to change the
+                      'Resource File Name' property for the managed resource compiler tool
+                      associated with all .resx files this class depends on.  Otherwise,
+                      the designers will not be able to interact properly with localized
+                      resources associated with this form.
+        </member>
+        <member name="M:WSMBS.WSMBSControl.#ctor">
+            <summary>
+            Initializes a new instance of the WSMBSControl class.
+            </summary>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes a new instance of the WSMBSControl class together with the specified container.
+            </summary>
+            <param name="container">An IContainer that represents the container for the WSMBSControl.</param>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.GetPortNames">
+            <summary>
+            Gets an array of serial port names for the current computer.
+            <para>Use the GetPortNames method to query the current computer for a list of valid serial port names. For example, you can use this method to determine whether COM1 and COM2 are valid serial ports for the current computer.</para>
+            </summary>
+            <returns>An array of serial port names for the current computer.</returns>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReadCoils(System.Byte,System.UInt16,System.UInt16,System.Boolean[])">
+            <summary>
+            Modbus function 01 (0x01). Read Coils. 0X references.
+            <para>This function code is used to read from 1 to 2000 contiguous status of coils in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of coils to read 1-2000.</param>
+            <param name="coils">Array to hold the values.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result.</see>.</para>
+            </returns>
+            <example>
+            This example show how to read 10 coils.
+            <code lang="c#">
+            bool[] coils = new bool[10];
+            WSMBS.Result Result;
+            Result = wsmbsControl1.ReadCoils(1, 0, 10, coils);
+            </code>
+            <code lang="vbnet">
+            Dim coils(10) As boolean
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.ReadCoils(1, 0, 10, coils)
+            </code>
+            <code lang="cpp">
+            array&lt;bool&gt;^ coils = gcnew array&lt;bool&gt;(10);
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;ReadCoils(1, 0, 10, coils);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReadCoils(System.Byte,System.UInt16,System.UInt16,System.Boolean[],System.Int32)">
+            <summary>
+            Modbus function 01 (0x01). Read Coils. 0X references.
+            <para>This function code is used to read from 1 to 2000 contiguous status of coils in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of coils to read 1-2000.</param>
+            <param name="coils">Array to hold the values.</param>
+            <param name="offset">The offset in the coils array to begin writing.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result.</see>.</para>
+            </returns>
+            <example>
+            This example show how to read 10 coils.
+            <code lang="c#">
+            bool[] coils = new bool[10];
+            WSMBS.Result Result;
+            Result = wsmbsControl1.ReadCoils(1, 0, 10, coils, 0);
+            </code>
+            <code lang="vbnet">
+            Dim coils(10) As boolean
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.ReadCoils(1, 0, 10, coils, 0)
+            </code>
+            <code lang="cpp">
+            array&lt;bool&gt;^ coils = gcnew array&lt;bool&gt;(10);
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;ReadCoils(1, 0, 10, coils, 0);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReadDiscreteInputs(System.Byte,System.UInt16,System.UInt16,System.Boolean[])">
+            <summary>
+            Modbus function 02 (0x02). Read Discrete Inputs. 1X references.
+            <para>This function code is used to read from 1 to 2000 contiguous status of discrete inputs in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of inputs to read 1-2000.</param>
+            <param name="discreteInputs">Array to hold the values.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to read 10 Discrete Inputs.
+            <code lang="c#">
+            bool[] discreteInputs = new bool[10];
+            WSMBS.Result Result;
+            Result = wsmbsControl1.ReadDiscreteInputs(1, 0, 10, discreteInputs);
+            </code>
+            <code lang="vbnet">
+            Dim discreteInputs(10) As boolean
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.ReadDiscreteInputs(1, 0, 10, discreteInputs)
+            </code>
+            <code lang="cpp">
+            array&lt;bool&gt;^ discreteInputs = gcnew array&lt;bool&gt;(10);
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;ReadDiscreteInputs(1, 0, 10, discreteInputs);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReadDiscreteInputs(System.Byte,System.UInt16,System.UInt16,System.Boolean[],System.Int32)">
+            <summary>
+            Modbus function 02 (0x02). Read Discrete Inputs. 1X references.
+            <para>This function code is used to read from 1 to 2000 contiguous status of discrete inputs in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of inputs to read 1-2000.</param>
+            <param name="discreteInputs">Array to hold the values.</param>
+            <param name="offset">The offset in the discreteInputs array to begin writing.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to read 10 Discrete Inputs.
+            <code lang="c#">
+            bool[] discreteInputs = new bool[10];
+            WSMBS.Result Result;
+            Result = wsmbsControl1.ReadDiscreteInputs(1, 0, 10, discreteInputs, 0);
+            </code>
+            <code lang="vbnet">
+            Dim discreteInputs(10) As boolean
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.ReadDiscreteInputs(1, 0, 10, discreteInputs, 0)
+            </code>
+            <code lang="cpp">
+            array&lt;bool&gt;^ discreteInputs = gcnew array&lt;bool&gt;(10);
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;ReadDiscreteInputs(1, 0, 10, discreteInputs, 0);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReadHoldingRegisters(System.Byte,System.UInt16,System.UInt16,System.Int16[])">
+            <summary>
+            Modbus function 03 (0x03). Read Holding Registers. 4X references.
+            <para>This function code is used to read the contents of a contiguous block of holding registers in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of holding registers to read 1-125.</param>
+            <param name="registers">Array to hold the values.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to read 10 holding registers.
+            <code lang="c#">
+            Int16[] registers = new Int16[10];
+            WSMBS.Result Result;
+            Result = wsmbsControl1.ReadHoldingRegisters(1, 0, 10, registers);
+            </code>
+            <code lang="vbnet">
+            Dim registers(10) As Short
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.ReadHoldingRegisters(1, 0, 10, registers)
+            </code>
+            <code lang="cpp">
+            array&lt;Int16&gt;^ registers = gcnew array&lt;Int16&gt;(10);
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;ReadHoldingRegisters(1, 0, 10, registers);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReadHoldingRegisters(System.Byte,System.UInt16,System.UInt16,System.Int16[],System.Int32)">
+            <summary>
+            Modbus function 03 (0x03). Read Holding Registers. 4X references.
+            <para>This function code is used to read the contents of a contiguous block of holding registers in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of holding registers to read 1-125.</param>
+            <param name="registers">Array to hold the values.</param>
+            <param name="offset">The offset in the registers array to begin writing.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to read 10 holding registers.
+            <code lang="c#">
+            Int16[] registers = new Int16[10];
+            WSMBS.Result Result;
+            Result = wsmbsControl1.ReadHoldingRegisters(1, 0, 10, registers, 0);
+            </code>
+            <code lang="vbnet">
+            Dim registers(10) As Short
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.ReadHoldingRegisters(1, 0, 10, registers, 0)
+            </code>
+            <code lang="cpp">
+            array&lt;Int16&gt;^ registers = gcnew array&lt;Int16&gt;(10);
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;ReadHoldingRegisters(1, 0, 10, registers, 0);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReadInputRegisters(System.Byte,System.UInt16,System.UInt16,System.Int16[])">
+            <summary>
+            Modbus function 04 (0x04). Read Input Registers. 3X references.
+            <para>This function code is used to read from 1 to 125 contiguous input registers in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of inputs registers to read 1-125.</param>
+            <param name="registers">Array to hold the values.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to read 10 input registers.
+            <code lang="c#">
+            Int16[] registers = new Int16[10];
+            WSMBS.Result Result;
+            Result = wsmbsControl1.ReadInputRegisters(1, 0, 10, registers);
+            </code>
+            <code lang="vbnet">
+            Dim registers(10) As Short
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.ReadInputRegisters(1, 0, 10, registers)
+            </code>
+            <code lang="cpp">
+            array&lt;Int16&gt;^ registers = gcnew array&lt;Int16&gt;(10);
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;ReadInputRegisters(1, 0, 10, registers);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReadInputRegisters(System.Byte,System.UInt16,System.UInt16,System.Int16[],System.Int32)">
+            <summary>
+            Modbus function 04 (0x04). Read Input Registers. 3X references.
+            <para>This function code is used to read from 1 to 125 contiguous input registers in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of inputs registers to read 1-125.</param>
+            <param name="registers">Array to hold the values.</param>
+            <param name="offset">The offset in the registers array to begin writing.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to read 10 input registers.
+            <code lang="c#">
+            Int16[] registers = new Int16[10];
+            WSMBS.Result Result;
+            Result = wsmbsControl1.ReadInputRegisters(1, 0, 10, registers, 0);
+            </code>
+            <code lang="vbnet">
+            Dim registers(10) As Short
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.ReadInputRegisters(1, 0, 10, registers, 0)
+            </code>
+            <code lang="cpp">
+            array&lt;Int16&gt;^ registers = gcnew array&lt;Int16&gt;(10);
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;ReadInputRegisters(1, 0, 10, registers, 0);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.WriteSingleCoil(System.Byte,System.UInt16,System.Boolean)">
+            <summary>
+            Modbus function 05 (0x05). Write Single Coil. 0X references.
+            <para>This function code is used to write a single output to either ON or OFF in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 0-255. 0 means broadcast.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="coil">The value of the coil to write. 0 or 1.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to write a "1" to address 0.
+            <code lang="c#">
+            WSMBS.Result Result;
+            Result = wsmbsControl1.WriteSingleCoil(1, 0, true);
+            </code>
+            <code lang="vbnet">
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.WriteSingleCoil(1, 0, 1)
+            </code>
+            <code lang="cpp">
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;WriteSingleCoil(1, 0, true);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.WriteSingleRegister(System.Byte,System.UInt16,System.Int16)">
+            <summary>
+            Modbus function 06 (0x06). Write Single Register. 3X references.
+            <para>This function code is used to write a single holding register in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 0-255. 0 means broadcast.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="register">The value of the register to write.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            This example show how to write the value 100 to address 0.
+            <example>
+            <code lang="c#">
+            WSMBS.Result Result;
+            Result = wsmbsControl1.WriteSingleRegister(1, 0, 100);
+            </code>
+            <code lang="vbnet">
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.WriteSingleRegister(1, 0, 100)
+            </code>
+            <code lang="cpp">
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;WriteSingleRegister(1, 0, 100);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.WriteMultipleCoils(System.Byte,System.UInt16,System.UInt16,System.Boolean[])">
+            <summary>
+            Modbus function 15 (0x0F). Write Multiple Coils. 0X references.
+            <para>This function code is used to force each coil in a sequence of coils to either ON or OFF in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 0-255. 0 means broadcast.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of coils to write 1-1968.</param>
+            <param name="coils">Array to hold the coils to write.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to write 10 coils.
+            <code lang="c#">
+            bool[] coils = new bool[10];
+            WSMBS.Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               coils[i] = true;
+            Result = wsmbsControl1.WriteMultipleCoils(1, 0, 10, coils);
+            </code>
+            <code lang="vbnet">
+            Dim coils(10) As boolean
+            Dim i As Integer
+            Dim Result As WSMBS.Result
+            For i = 0 To 9
+               coils(i) = 1
+            Next i
+            Result = WsmbsControl1.WriteMultipleCoils(1, 0, 10, coils)
+            </code>
+            <code lang="cpp">
+             array&lt;bool&gt;^ coils = gcnew array&lt;bool&gt;(10);
+             WSMBS::Result Result;
+             for (int i = 0; i &lt; 10; i++)
+                coils[i] = true;
+             Result = wsmbsControl1-&gt;WriteMultipleCoils(1, 0, 10, coils);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.WriteMultipleCoils(System.Byte,System.UInt16,System.UInt16,System.Boolean[],System.Int32)">
+            <summary>
+            Modbus function 15 (0x0F). Write Multiple Coils. 0X references.
+            <para>This function code is used to force each coil in a sequence of coils to either ON or OFF in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 0-255. 0 means broadcast.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of coils to write 1-1968.</param>
+            <param name="coils">Array to hold the coils to write.</param>
+            <param name="offset">The zero-based offset in the coils parameter at which to begin copying coils to the port.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to write 10 coils.
+            <code lang="c#">
+            bool[] coils = new bool[10];
+            WSMBS.Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               coils[i] = true;
+            Result = wsmbsControl1.WriteMultipleCoils(1, 0, 10, coils, 0);
+            </code>
+            <code lang="vbnet">
+            Dim coils(10) As boolean
+            Dim i As Integer
+            Dim Result As WSMBS.Result
+            For i = 0 To 9
+               coils(i) = 1
+            Next i
+            Result = WsmbsControl1.WriteMultipleCoils(1, 0, 10, coils, 0)
+            </code>
+            <code lang="cpp">
+             array&lt;bool&gt;^ coils = gcnew array&lt;bool&gt;(10);
+             WSMBS::Result Result;
+             for (int i = 0; i &lt; 10; i++)
+                coils[i] = true;
+             Result = wsmbsControl1-&gt;WriteMultipleCoils(1, 0, 10, coils, 0);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.WriteMultipleRegisters(System.Byte,System.UInt16,System.UInt16,System.Int16[])">
+            <summary>
+            Modbus function  16 (0x10). Write Multiple registers. 3X references.
+            <para>This function code is used to write a block of contiguous registers (1 to 123 registers) in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 0-255. 0 means broadcast.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of registers to write 1-123.</param>
+            <param name="registers">Array to hold the registers to write.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to write 10 registers.
+            <code lang="c#">
+            Int16[] registers = new Int16[10];
+            WSMBS.Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               registers[i] = i;
+            Result = wsmbsControl1.WriteMultipleRegisters(1, 0, 10, registers);
+            </code>
+            <code lang="vbnet">
+            Dim registers(10) As Short
+            Dim i As Integer
+            Dim Result As WSMBS.Result
+            For i = 0 To 9
+               registers(i) = i
+            Next i
+            Result = WsmbsControl1.WriteMultipleRegisters(1, 0, 10, registers)
+            </code>
+            <code lang="cpp">
+            array&lt;Int16&gt;^ registers = gcnew array&lt;Int16&gt;(10);
+            WSMBS::Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               registers[i] = i;
+            Result = wsmbsControl1-&gt;WriteMultipleRegisters(1, 0, 10, registers);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.WriteMultipleRegisters(System.Byte,System.UInt16,System.UInt16,System.Int16[],System.Int32)">
+            <summary>
+            Modbus function  16 (0x10). Write Multiple registers. 3X references.
+            <para>This function code is used to write a block of contiguous registers (1 to 123 registers) in a remote device.</para>
+            </summary>
+            <param name="unitId">The Unit ID 0-255. 0 means broadcast.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of registers to write 1-123.</param>
+            <param name="registers">Array to hold the registers to write.</param>
+            <param name="offset">The zero-based offset in the registers parameter at which to begin copying registers to the port.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to write 10 registers.
+            <code lang="c#">
+            Int16[] registers = new Int16[10];
+            WSMBS.Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               registers[i] = i;
+            Result = wsmbsControl1.WriteMultipleRegisters(1, 0, 10, registers, 0);
+            </code>
+            <code lang="vbnet">
+            Dim registers(10) As Short
+            Dim i As Integer
+            Dim Result As WSMBS.Result
+            For i = 0 To 9
+               registers(i) = i
+            Next i
+            Result = WsmbsControl1.WriteMultipleRegisters(1, 0, 10, registers, 0)
+            </code>
+            <code lang="cpp">
+            array&lt;Int16&gt;^ registers = gcnew array&lt;Int16&gt;(10);
+            WSMBS::Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               registers[i] = i;
+            Result = wsmbsControl1-&gt;WriteMultipleRegisters(1, 0, 10, registers, 0);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReadWriteMultipleRegisters(System.Byte,System.UInt16,System.UInt16,System.Int16[],System.UInt16,System.UInt16,System.Int16[])">
+            <summary>
+            Modbus function 23 (0x17). Read/Write Multiple registers. 3X references.
+            <para>This function code performs a combination of one read operation and one write operation in a
+            single Modbus transaction. The write operation is performed before the read.</para>
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="readAddress">Modbus address 0-65535.</param>
+            <param name="readQuantity">Number of registers to Read 1-125.</param>
+            <param name="readRegisters">Array to hold the registers to read.</param>
+            <param name="writeAddress">Modbus address 0-65535.</param>
+            <param name="writeQuantity">Number of registers to write 1-121.</param>
+            <param name="writeRegisters">Array to hold the registers to write.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to write 10 registers and read 10 registers.
+            <code lang="c#">
+            Int16[] readRegisters = new Int16[10];
+            Int16[] writeRegisters = new Int16[10];
+            WSMBS.Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               writeRegisters[i] = i;
+            Result = wsmbsControl1.ReadWriteMultipleRegisters(1, 0, 10, readRegisters, 0, 10, writeRegisters);
+            </code>
+            <code lang="vbnet">
+            Dim readRegisters(10) As Short
+            Dim writeRegisters(10) As Short
+            Dim i As Integer
+            Dim Result As WSMBSResult
+            For i = 0 To 9
+               writeRegisters(i) = i
+            Next i
+            Result = WsmbsControl1.ReadWriteMultipleRegisters(1, 0, 10, readRegisters, 0, 10, writeRegisters)
+            </code>
+            <code lang="cpp">
+            array&lt;Int16&gt;^ readRegisters = gcnew array&lt;Int16&gt;(10);
+            array&lt;Int16&gt;^ writeRegisters = gcnew array&lt;Int16&gt;(10);
+            WSMBS::Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               writeRegisters[i] = i;
+            Result = wsmbsControl1-&gt;ReadWriteMultipleRegisters(1, 0, 10, readRegisters, 0, 10, writeRegisters);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReadUserDefinedCoils(System.Byte,System.Byte,System.UInt16,System.UInt16,System.Boolean[])">
+            <summary>
+            Read coils using a user defined Modbus function code.
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="function">The user function 1-127.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of coils to read 1-2000.</param>
+            <param name="coils">Array to hold the values.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to read 10 user defined coils. If function 01 is used then the function do the same as ReadCoils.
+            <code lang="c#">
+            bool[] coils = new bool[10];
+            WSMBS.Result Result;
+            Result = wsmbsControl1.ReadUserDefinedCoils(1, 1, 0, 10, coils);
+            </code>
+            <code lang="vbnet">
+            Dim coils(10) As boolean
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.ReadUserDefinedCoils(1, 1, 0, 10, coils)
+            </code>
+            <code lang="cpp">
+            array&lt;bool&gt;^ coils = gcnew array&lt;bool&gt;(10);
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;ReadUserDefinedCoils(1, 1, 0, 10, coils);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReadUserDefinedCoils(System.Byte,System.Byte,System.UInt16,System.UInt16,System.Boolean[],System.Int32)">
+            <summary>
+            Read coils using a user defined Modbus function code.
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="function">The user function 1-127.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of coils to read 1-2000.</param>
+            <param name="coils">Array to hold the values.</param>
+            <param name="offset">The offset in the coils array to begin writing.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to read 10 user defined coils. If function 01 is used then the function do the same as ReadCoils.
+            <code lang="c#">
+            bool[] coils = new bool[10];
+            WSMBS.Result Result;
+            Result = wsmbsControl1.ReadUserDefinedCoils(1, 1, 0, 10, coils, 0);
+            </code>
+            <code lang="vbnet">
+            Dim coils(10) As boolean
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.ReadUserDefinedCoils(1, 1, 0, 10, coils, 0)
+            </code>
+            <code lang="cpp">
+            array&lt;bool&gt;^ coils = gcnew array&lt;bool&gt;(10);
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;ReadUserDefinedCoils(1, 1, 0, 10, coils, 0);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReadUserDefinedRegisters(System.Byte,System.Byte,System.UInt16,System.UInt16,System.Int16[])">
+            <summary>
+            Read registers using a user defined Modbus function code.
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="function">The user function 1-127.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of registers to read 1-125.</param>
+            <param name="registers">Array to hold the values.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to read 10 user defined registers. If function 03 is used then the function do the same as ReadHoldingRegisters.
+            <code lang="c#">
+            Int16[] registers = new Int16[10];
+            WSMBS.Result Result;
+            Result = wsmbsControl1.ReadUserDefinedRegisters(1, 3, 0, 10, registers);
+            </code>
+            <code lang="vbnet">
+            Dim registers(10) As Short
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.ReadUserDefinedRegisters(1, 3, 0, 10, registers)
+            </code>
+            <code lang="cpp">
+            array&lt;Int16&gt;^ registers = gcnew array&lt;Int16&gt;(10);
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;ReadUserDefinedRegisters(1, 3, 0, 10, registers);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReadUserDefinedRegisters(System.Byte,System.Byte,System.UInt16,System.UInt16,System.Int16[],System.Int32)">
+            <summary>
+            Read registers using a user defined Modbus function code.
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="function">The user function 1-127.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of registers to read 1-125.</param>
+            <param name="registers">Array to hold the values.</param>
+            <param name="offset">The offset in the registers array to begin writing.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to read 10 user defined registers. If function 03 is used then the function do the same as ReadHoldingRegisters.
+            <code lang="c#">
+            Int16[] registers = new Int16[10];
+            WSMBS.Result Result;
+            Result = wsmbsControl1.ReadUserDefinedRegisters(1, 3, 0, 10, registers, 0);
+            </code>
+            <code lang="vbnet">
+            Dim registers(10) As Short
+            Dim Result As WSMBS.Result
+            Result = WsmbsControl1.ReadUserDefinedRegisters(1, 3, 0, 10, registers, 0)
+            </code>
+            <code lang="cpp">
+            array&lt;Int16&gt;^ registers = gcnew array&lt;Int16&gt;(10);
+            WSMBS::Result Result;
+            Result = wsmbsControl1-&gt;ReadUserDefinedRegisters(1, 3, 0, 10, registers, 0);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.WriteUserDefinedCoils(System.Byte,System.Byte,System.UInt16,System.UInt16,System.Boolean[])">
+            <summary>
+            Write coils using a user defined Modbus function code.
+            </summary>
+            <param name="unitId">The Unit ID 0-255. 0 means broadcast.</param>
+            <param name="function">The user function 1-127.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of coils to write 1-1968.</param>
+            <param name="coils">Array to hold the coils to write.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            <code lang="c#">
+            bool[] coils = new bool[10];
+            WSMBS.Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               coils[i] = true;
+            Result = wsmbsControl1.WriteUserDefinedCoils(1, 15, 0, 10, coils);
+            </code>
+            <code lang="vbnet">
+            Dim coils(10) As Boolean
+            Dim i As Integer
+            Dim Result As WSMBS.Result
+            For i = 0 To 9
+               coils(i) = 1
+            Next i
+            Result = WsmbsControl1.WriteUserDefinedCoils(1, 15, 0, 10, coils)
+            </code>
+            <code lang="cpp">
+            array&lt;bool&gt;^ coils = gcnew array&lt;bool&gt;(10);
+            WSMBS::Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               coils[i] = true;
+            Result = wsmbsControl1-&gt;WriteUserDefinedCoils(1, 15, 0, 10, coils);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.WriteUserDefinedCoils(System.Byte,System.Byte,System.UInt16,System.UInt16,System.Boolean[],System.Int32)">
+            <summary>
+            Write coils using a user defined Modbus function code.
+            </summary>
+            <param name="unitId">The Unit ID 0-255. 0 means broadcast.</param>
+            <param name="function">The user function 1-127.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of coils to write 1-1968.</param>
+            <param name="coils">Array to hold the coils to write.</param>
+            <param name="offset">The zero-based offset in the coils parameter at which to begin copying coils to the port.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            <code lang="c#">
+            bool[] coils = new bool[10];
+            WSMBS.Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               coils[i] = true;
+            Result = wsmbsControl1.WriteUserDefinedCoils(1, 15, 0, 10, coils, 0);
+            </code>
+            <code lang="vbnet">
+            Dim coils(10) As Boolean
+            Dim i As Integer
+            Dim Result As WSMBS.Result
+            For i = 0 To 9
+               coils(i) = 1
+            Next i
+            Result = WsmbsControl1.WriteUserDefinedCoils(1, 15, 0, 10, coils, 0)
+            </code>
+            <code lang="cpp">
+            array&lt;bool&gt;^ coils = gcnew array&lt;bool&gt;(10);
+            WSMBS::Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               coils[i] = true;
+            Result = wsmbsControl1-&gt;WriteUserDefinedCoils(1, 15, 0, 10, coils, 0);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.WriteUserDefinedRegisters(System.Byte,System.Byte,System.UInt16,System.UInt16,System.Int16[])">
+            <summary>
+            Write registers using a user defined Modbus function code.
+            </summary>
+            <param name="unitId">The Unit ID 0-255. 0 means broadcast.</param>
+            <param name="function">The user function 1-127.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of registers to write 1-123.</param>
+            <param name="registers">Array to hold the registers to write.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            <code lang="c#">
+            Int16[] registers = new Int16[10];
+            WSMBS.Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               registers[i] = i;
+            Result = wsmbsControl1.WriteUserDefinedRegisters(1, 16, 0, 10, registers);
+            </code>
+            <code lang="vbnet">
+            Dim registers(10) As Short
+            Dim i As Integer
+            Dim Result As WSMBS.Result
+            For i = 0 To 9
+               registers(i) = i
+            Next i
+            Result = WsmbsControl1.WriteUserDefinedRegisters(1, 16, 0, 10, registers)
+            </code>
+            <code lang="cpp">
+            array&lt;Int16&gt;^ registers = gcnew array&lt;Int16&gt;(10);
+            WSMBS::Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               registers[i] = i;
+            Result = wsmbsControl1-&gt;WriteUserDefinedRegisters(1, 16, 0, 10, registers);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.WriteUserDefinedRegisters(System.Byte,System.Byte,System.UInt16,System.UInt16,System.Int16[],System.Int32)">
+            <summary>
+            Write registers using a user defined Modbus function code.
+            </summary>
+            <param name="unitId">The Unit ID 0-255. 0 means broadcast.</param>
+            <param name="function">The user function 1-127.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="quantity">Number of registers to write 1-123.</param>
+            <param name="registers">Array to hold the registers to write.</param>
+            <param name="offset">The zero-based offset in the registers parameter at which to begin copying registers to the port.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            <code lang="c#">
+            Int16[] registers = new Int16[10];
+            WSMBS.Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               registers[i] = i;
+            Result = wsmbsControl1.WriteUserDefinedRegisters(1, 16, 0, 10, registers, 0);
+            </code>
+            <code lang="vbnet">
+            Dim registers(10) As Short
+            Dim i As Integer
+            Dim Result As WSMBS.Result
+            For i = 0 To 9
+               registers(i) = i
+            Next i
+            Result = WsmbsControl1.WriteUserDefinedRegisters(1, 16, 0, 10, registers, 0)
+            </code>
+            <code lang="cpp">
+            array&lt;Int16&gt;^ registers = gcnew array&lt;Int16&gt;(10);
+            WSMBS::Result Result;
+            for (int i = 0; i &lt; 10; i++)
+               registers[i] = i;
+            Result = wsmbsControl1-&gt;WriteUserDefinedRegisters(1, 16, 0, 10, registers, 0);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.ReportSlaveID(System.Byte,System.Byte@,System.Byte[])">
+            <summary>
+            Modbus function 17 (0x11). Report slave ID.
+            </summary>
+            <param name="unitId">The Unit ID 1-255.</param>
+            <param name="byteCount">The size of the device specific data.</param>
+            <param name="deviceSpecific">Buffer to hold the data. Be sure this is large enough.</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <example>
+            This example show how to read the slave ID and device specific data.
+            <code lang="c#">
+            WSMBS.Result res;
+            byte byteCount;                            // Hold the number of bytes returned in deviceSpecific
+            byte[] deviceSpecific = new byte[100];     // Be sure the size of this array is big enough
+            res = wsmbsControl1.ReportSlaveID(1, out byteCount, deviceSpecific);
+            </code>
+            <code lang="vbnet">
+            Dim res As WSMBS.Result                    '  Hold the number of bytes returned in deviceSpecific
+            Dim byteCount As Byte                      '  Be sure the size of this array is big enough
+            Dim deviceSpecific(100) As Byte
+            res = WsmbsControl1.ReportSlaveID(1, byteCount, deviceSpecific)
+            </code>
+            <code lang="cpp">
+            WSMBS::Result res;
+            Byte byteCount;                                                    // Hold the number of bytes returned in deviceSpecific
+            array&lt;Byte&gt;^ deviceSpecific = gcnew array&lt;Byte&gt;(100);  // Be sure the size of this array is big enough
+            res = wsmbsControl1-&gt;ReportSlaveID(1, byteCount, deviceSpecific);
+            </code>
+            </example>
+            <remarks>byteCount receive the size of the slave ID data. deviceSpecific[0] = Slave ID, deviceSpecific[1] = Run indicator.</remarks>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.MaskWriteRegister(System.Byte,System.UInt16,System.UInt16,System.UInt16)">
+            <summary>
+            22 (0x16) Mask Write Register.
+            </summary>
+            <param name="unitId">The Unit ID 0-255. 0 means broadcast.</param>
+            <param name="address">Modbus address 0-65535.</param>
+            <param name="andMask">The AND mask</param>
+            <param name="orMask">The OR mask</param>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBSControl.Result</see>.</para>
+            </returns>
+            <remarks>This function code is used to modify the contents of a specified holding register using a
+            combination of an AND mask, an OR mask, and the register's current contents. The function
+            can be used to set or clear individual bits in the register.
+            <para> Result = (Current Contents AND andMask) OR (orMask AND (NOT andMask))</para>
+            <para>If the orMask value is zero, the result is simply the logical ANDing of the current contents and
+            andMask. If the andMask value is zero, the result is equal to the orMask value.</para>
+            </remarks>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.Open">
+            <summary>
+            Opens the serial comm. port.
+            </summary>
+            <returns>
+            <para>If the function succeeds, the return value is zero.</para>
+            <para>If the function fails, the return value is nonzero. See <see cref="T:WSMBS.Result">WSMBS.Result</see>.</para>
+            </returns>
+            <example>
+            <code lang="c#">
+            WSMBS.Result Result;
+            wsmbsControl1.Mode = WSMBS.Mode.RTU;
+            wsmbsControl1.PortName = "COM1";
+            wsmbsControl1.BaudRate = 9600;
+            wsmbsControl1.StopBits = 1;
+            wsmbsControl1.Parity = WSMBS.Parity.None;
+            wsmbsControl1.ResponseTimeout = 1000;
+            Result = wsmbsControl1.Open();
+            if (Result != WSMBS.Result.SUCCESS)
+               MessageBox.Show(wsmbsControl1.GetLastErrorString());
+            </code>
+            <code lang="vbnet">
+            Dim Result As WSMBS.Result
+            WsmbsControl1.Mode = WSMBS.Mode.RTU
+            WsmbsControl1.CommPort = "COM1"
+            WsmbsControl1.BaudRate = 9600
+            WsmbsControl1.StopBits = 1
+            WsmbsControl1.Parity = WSMBS.Parity.None
+            WsmbsControl1.ResponseTimeout = 1000
+            Result = WsmbsControl1.Open()
+            If Result &lt;&gt; WSMBS.Result.SUCCESS Then
+               MessageBox.Show(WsmbsControl1.GetLastErrorString())
+            End If
+            </code>
+            <code lang="cpp">
+            WSMBS::Result Result;
+            wsmbsControl1-&gt;Mode = WSMBS::Mode::RTU;
+            wsmbsControl1-&gt;CommPort = "COM1";
+            wsmbsControl1-&gt;BaudRate = 9600;
+            wsmbsControl1-&gt;StopBits = 1;
+            wsmbsControl1-&gt;Parity = WSMBS::Parity::None
+            wsmbsControl1-&gt;ResponseTimeout = 1000;
+            Result = wsmbsControl1-&gt;Open();
+            if (Result != WSMBS::Result::SUCCESS)
+               MessageBox::Show (wsmbsControl1-&gt;GetLastErrorString ());
+            </code>
+            </example>
+            <seealso cref="M:WSMBS.WSMBSControl.Close">Close</seealso>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.Close">
+            <summary>
+            Close the serial comm. port.
+            <para>The best practice for any application is to wait for some amount of time after calling the Close method before attempting to call the Open method, as the port may not be closed instantly.</para>
+            </summary>
+            <example>
+            <code lang="c#">
+            wsmbsControl1.Close();
+            </code>
+            <code lang="vbnet">
+            WsmbsControl1.Close()
+            </code>
+            <code lang="cpp">
+            wsmbsControl1-&gt;Close();
+            </code>
+            </example>
+            <seealso cref="M:WSMBS.WSMBSControl.Open">Open</seealso>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.GetLastErrorString">
+            <summary>
+            Returns the last error as a string.
+            </summary>
+            <returns>
+            Error description as string.
+            </returns>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.LicenseKey(System.String)">
+            <summary>
+            Removes the evaluation time limits. Call this function before the Open function.
+            </summary>
+            <param name="LicenseKey">The license key received when ordered the Component.</param>
+            <example>
+            This example shows how to set the license key.
+            <code lang="c#">
+            wsmbsControl1.LicenseKey ("abcd.....");
+            </code>
+            <code lang="vbnet">
+            WsmbsControl1.LicenseKey("abcd")
+            </code>
+            <code lang="cpp">
+            wsmbsControl1->LicenseKey ("abcd.....");
+            </code>
+            </example>
+            <returns>Return true if license key is accepted</returns>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.RegistersToFloat(System.Int16,System.Int16)">
+            <summary>
+            Returns a single-precision floating point number converted from two Int16.
+            </summary>
+            <param name="hiReg">High order register.</param>
+            <param name="loReg">Low order register.</param>
+            <returns>A single-precision floating point number.</returns>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.RegistersToInt32(System.Int16,System.Int16)">
+            <summary>
+            Returns a 32-bit signed integer converted from two Int16.
+            </summary>
+            <param name="hiReg">High order register.</param>
+            <param name="loReg">Low order register.</param>
+            <returns>A 32-bit signed integer.</returns>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.FloatToRegisters(System.Single)">
+            <summary>
+            Return two Int16 convereted from a float.
+            </summary>
+            <param name="value">A single-precision floating point number.</param>
+            <returns>An array of two Int16.</returns>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.Int32ToRegisters(System.Int32)">
+            <summary>
+            Return two Int16 convereted from an Int32.
+            </summary>
+            <param name="value">A 32-bit signed integer.</param>
+            <returns>An array of two Int16.</returns>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.GetTxBuffer(System.Byte[])">
+            <summary>
+            Gets the transmit buffer.
+            </summary>
+            <param name="byteArray">A byte array to hold the bytes from the transmit buffer.</param>
+            <returns>Returns the number of transmitted bytes in the byte array.</returns>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.GetRxBuffer(System.Byte[])">
+            <summary>
+            Gets the receive buffer.
+            </summary>
+            <param name="byteArray">A byte array to hold the bytes from the receive buffer.</param>
+            <returns>Returns the number of received bytes in the byte array.</returns>
+        </member>
+        <member name="F:WSMBS.WSMBSControl.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:WSMBS.WSMBSControl.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:WSMBS.WSMBSControl.RTSEnable">
+            <summary>
+            Gets or sets a value indicating whether the Request to Send (RTS) signal is enabled during serial communication.
+            </summary>
+            <example>
+            This example shows how to set the RTSEnable to false.
+            <code lang="c#">
+            wsmbsControl1.RTSEnable = false;
+            </code>
+            <code lang="vbnet">
+            WsmbsControl1.RTSEnable = false
+            </code>
+            <code lang="cpp">
+            wsmbsControl1->RTSEnable = false;
+            </code>
+            </example>
+            <remarks>Set the RTSEnable before Open(). The default value is false.</remarks>
+        </member>
+        <member name="P:WSMBS.WSMBSControl.DTREnable">
+            <summary>
+            Gets or sets a value that enables the Data Terminal Ready (DTR) signal during serial communication.
+            </summary>
+            <example>
+            This example shows how to set the DTREnable to false.
+            <code lang="c#">
+            wsmbsControl1.DTREnable = false;
+            </code>
+            <code lang="vbnet">
+            WsmbsControl1.DTREnable = false
+            </code>
+            <code lang="cpp">
+            wsmbsControl1->DTREnable = false;
+            </code>
+            </example>
+            <remarks>Set the DTREnable before Open(). The default value is false.</remarks>
+        </member>
+        <member name="P:WSMBS.WSMBSControl.Mode">
+            <summary>
+            Gets or sets the Modbus protocol mode.
+            </summary>
+            <example>
+            This example shows how to set the Mode to Modbus RTU.
+            <code lang="c#">
+            wsmbsControl1.Mode = WSMBS.Mode.RTU;
+            </code>
+            <code lang="vbnet">
+            WsmbsControl1.Mode = WSMBS.Mode.RTU
+            </code>
+            <code lang="cpp">
+            wsmbsControl1->Mode = WSMBS::Mode::RTU;
+            </code>
+            </example>
+            <remarks>Set the Mode before Open(). The default value is Modbus RTU.</remarks>
+        </member>
+        <member name="P:WSMBS.WSMBSControl.RemoveEcho">
+            <summary>
+            If your slave device or RS232/RS485 converter echoes the request just sent.
+            Setting RemoveEcho to true will remove the request echoed back from the response.
+            </summary>
+            <example>
+            This example shows how to set RemoveEcho to true.
+            <code lang="c#">
+            wsmbsControl1.RemoveEcho = true;
+            </code>
+            <code lang="vbnet">
+            WsmbsControl1.RemoveEcho = true
+            </code>
+            <code lang="cpp">
+            wsmbsControl1->RemoveEcho = true;
+            </code>
+            </example>
+            <remarks>Set the RemoveEcho before Open(). The default value is false.</remarks>
+        </member>
+        <member name="P:WSMBS.WSMBSControl.BaudRate">
+            <summary>
+            Gets or sets the baud rate at which the communications device operates.
+            </summary>
+            <example>
+            This example shows how to set the baud rate to 9600.
+            <code lang="c#">
+            wsmbsControl1.BaudRate = 9600;
+            </code>
+            <code lang="vbnet">
+            WsmbsControl1.BaudRate = 9600
+            </code>
+            <code lang="cpp">
+            wsmbsControl1->BaudRate = 9600;
+            </code>
+            </example>
+            <remarks>Set the BaudRate before Open(). The default value is 9600.</remarks>
+        </member>
+        <member name="P:WSMBS.WSMBSControl.DataBits">
+            <summary>
+            Gets or sets the standard length of data bits per byte.
+            </summary>
+            <example>
+            This example shows how to set the DataBits to 8.
+            <code lang="c#">
+            wsmbsControl1.DataBits = 8;
+            </code>
+            <code lang="vbnet">
+            WsmbsControl1.DataBits = 8
+            </code>
+            <code lang="cpp">
+            wsmbsControl1->DataBits = 8;
+            </code>
+            </example>
+            <remarks>Set the DataBits before Open(). Forced to 8 data bits in RTU mode. Default 7 for ASCII mode.</remarks>
+        </member>
+        <member name="P:WSMBS.WSMBSControl.Parity">
+            <summary>
+            Gets or sets the parity scheme to be used.
+            </summary>
+            <example>
+            This example shows how to set the Parity to None.
+            <code lang="c#">
+            wsmbsControl1.Parity = WSMBS.Parity.None;
+            </code>
+            <code lang="vbnet">
+            WsmbsControl1.Parity = WSMBS.Parity.None
+            </code>
+            <code lang="cpp">
+            wsmbsControl1->Parity = WSMBS::Parity::None;
+            </code>
+            </example>
+            <remarks>Set the Parity before Open(). The default value is None.</remarks>
+        </member>
+        <member name="P:WSMBS.WSMBSControl.StopBits">
+            <summary>
+            Gets or sets the number of stop bits to be used.
+            </summary>
+            <example>
+            This example shows how to set the stop bits to 1 stop bit.
+            <code lang="c#">
+            wsmbsControl1.StopBits = 1;
+            </code>
+            <code lang="vbnet">
+            WsmbsControl1.StopBits = 1
+            </code>
+            <code lang="cpp">
+            wsmbsControl1->StopBits = 1;
+            </code>
+            </example>
+            <remarks>Set the number of stop bits before Open(). The default value is 1.</remarks>
+        </member>
+        <member name="P:WSMBS.WSMBSControl.ResponseTimeout">
+            <summary>
+            Gets or sets the Max time to wait for response.
+            </summary>
+            <example>
+            This example shows how to set the response timeout to 1000ms.
+            <code lang="c#">
+            wsmbsControl1.ResponseTimeout = 1000;
+            </code>
+            <code lang="vbnet">
+            WsmbsControl1.ResponseTimeout = 1000
+            </code>
+            <code lang="cpp">
+            wsmbsControl1->ResponseTimeout = 1000;
+            </code>
+            </example>
+            <remarks>Set the ResponseTimeout before Open(). The default value is 1000.</remarks>
+        </member>
+        <member name="P:WSMBS.WSMBSControl.PortName">
+            <summary>
+            The communications port. The default is "COM1".
+            </summary>
+            <example>
+            This example shows how to set the port to COM1.
+            <code lang="c#">
+            wsmbsControl1.PortName = "COM1";
+            </code>
+            <code lang="vbnet">
+            WsmbsControl1.PortName = "COM1"
+            </code>
+            <code lang="cpp">
+            wsmbsControl1-&gt;PortName = "COM1";
+            </code>
+            </example>
+            <remarks>A list of valid port names can be obtained using the <see cref="M:WSMBS.WSMBSControl.GetPortNames">GetPortNames</see> method.</remarks>
+            <seealso cref="M:WSMBS.WSMBSControl.GetPortNames">GetPortNames</seealso>
+        </member>
+    </members>
+</doc>
