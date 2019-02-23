@@ -592,17 +592,19 @@ namespace MotorCtl
                 gp.AxisFill.Color = Color.DarkBlue;
                 this.Controls.Add(zd);
 
+                btClose.Location = new Point(1070, 22);
+
                 btnCompress = new Button();
                 btnCompress.Text = "<<";
                 btnCompress.Size = new Size(100, 30);
-                btnCompress.Location = new Point(940, 22);
+                btnCompress.Location = new Point(810, 22);
                 btnCompress.Click += btnCompress_Click;
                 this.Controls.Add(btnCompress);
 
                 btnWriteData = new Button();
                 btnWriteData.Text = "Save";
                 btnWriteData.Size = new Size(100,30);
-                btnWriteData.Location = new Point(1070,22);
+                btnWriteData.Location = new Point(940,22);
                 btnWriteData.Click += btnWriteData_Click;
                 this.Controls.Add(btnWriteData);
 
@@ -666,6 +668,7 @@ namespace MotorCtl
             Controls.Remove(btnCompress);
             Controls.Remove(btnWriteData);
             Controls.Remove(zd);
+            btClose.Location = new Point(546, 22);
             this.Size = new Size(672, 860);
             bExtend = 0;
         }
