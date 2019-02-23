@@ -74,6 +74,7 @@
             this.ckDispAlais = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.labRecv = new System.Windows.Forms.Label();
             this.labSend = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -356,21 +357,22 @@
             // 
             // cbBaudrate
             // 
+            this.cbBaudrate.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbBaudrate.FormattingEnabled = true;
-            this.cbBaudrate.Location = new System.Drawing.Point(90, 100);
+            this.cbBaudrate.Location = new System.Drawing.Point(93, 96);
             this.cbBaudrate.Name = "cbBaudrate";
-            this.cbBaudrate.Size = new System.Drawing.Size(130, 25);
+            this.cbBaudrate.Size = new System.Drawing.Size(127, 27);
             this.cbBaudrate.TabIndex = 1;
             this.cbBaudrate.Visible = false;
             // 
             // cbSerial
             // 
+            this.cbSerial.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSerial.FormattingEnabled = true;
-            this.cbSerial.Location = new System.Drawing.Point(93, 64);
+            this.cbSerial.Location = new System.Drawing.Point(63, 65);
             this.cbSerial.Name = "cbSerial";
-            this.cbSerial.Size = new System.Drawing.Size(130, 25);
+            this.cbSerial.Size = new System.Drawing.Size(157, 22);
             this.cbSerial.TabIndex = 11;
-            this.cbSerial.Visible = false;
             // 
             // numPortNo
             // 
@@ -585,28 +587,37 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.button1);
             this.groupBox5.Controls.Add(this.labRecv);
-            this.groupBox5.Location = new System.Drawing.Point(8, 741);
+            this.groupBox5.Location = new System.Drawing.Point(8, 729);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(646, 81);
+            this.groupBox5.Size = new System.Drawing.Size(646, 107);
             this.groupBox5.TabIndex = 17;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Recv";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(393, 57);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // labRecv
             // 
             this.labRecv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labRecv.Location = new System.Drawing.Point(3, 21);
             this.labRecv.Name = "labRecv";
-            this.labRecv.Size = new System.Drawing.Size(640, 57);
+            this.labRecv.Size = new System.Drawing.Size(640, 83);
             this.labRecv.TabIndex = 1;
             this.labRecv.Text = "Recv:";
-            this.labRecv.Click += new System.EventHandler(this.labRecv_Click);
             // 
             // labSend
             // 
             this.labSend.AutoSize = true;
-            this.labSend.Location = new System.Drawing.Point(12, 721);
+            this.labSend.Location = new System.Drawing.Point(12, 709);
             this.labSend.Name = "labSend";
             this.labSend.Size = new System.Drawing.Size(42, 17);
             this.labSend.TabIndex = 0;
@@ -617,7 +628,7 @@
             this.AcceptButton = this.btExec;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 831);
+            this.ClientSize = new System.Drawing.Size(663, 841);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.labSend);
             this.Controls.Add(this.groupBox4);
@@ -706,6 +717,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label labRecv;
         private System.Windows.Forms.Label labSend;
+        private System.Windows.Forms.Button button1;
     }
 }
 
