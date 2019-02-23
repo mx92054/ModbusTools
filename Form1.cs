@@ -31,12 +31,15 @@ namespace MotorCtl
         private int bExtend = 0;
         private ZedGraphControl zd;
         private GraphPane gp;
-        private int timeStart = 0;
-        private int gpAdr;
         private Button btnWriteData;
         private Button btnCompress;
-        private string gpName;
         private int[] m_Count;
+
+        private int timeStart = 0;
+        private int[] agpAdr = new int[10];
+        private string[] agpName = new string[10];
+        private int ptr_gp = 0;
+        private Color[] agclr = new Color[10] { Color.Red, Color.Purple, Color.Pink,Color.Plum,Color.Peru,Color.PaleTurquoise,Color.PowderBlue,Color.RosyBrown,Color.SlateBlue,Color.SlateGray};
 
         public frMain()
         {
@@ -109,8 +112,13 @@ namespace MotorCtl
 
         private void btExec_Click(object sender, EventArgs e)
         {
+            bool bSameCmdNo = false;
+            int  last_adr = m_nAddr ;
+
             WSMBS.Result sRes = WSMBS.Result.SUCCESS ;
             WSMBT.Result tRes = WSMBT.Result.SUCCESS ;
+
+            if (m_nCmdNo == lstCmd.SelectedIndex) bSameCmdNo = true;
 
             m_nAddr = (ushort)numStartAdr.Value;
             m_nLength = (ushort)numCount.Value;
@@ -208,7 +216,26 @@ namespace MotorCtl
 
                 if (bExtend == 1)
                 {
-                    bExtend = 2;
+                    bool bLast = false ;
+                    int address ;
+                    for(int i=0 ; i < ptr_gp ; i++)
+                    {
+                        address = last_adr + agpAdr[ptr_gp] ;
+                        if (bSameCmdNo && address >= m_nAddr && address < (m_nAddr + m_nLength))
+                        {
+                            agpAdr[i] = address - m_nAddr;
+                        }
+                        else
+                            bLast = true ;
+                    }
+                    if (bLast)
+                    {
+                        bExtend = 2;
+                        gp.CurveList.Clear();
+                        ptr_gp = 0;
+                        timeStart = 0;
+                    }
+                    
                 }
 
                 timer1.Interval = (int)numCycle.Value;
@@ -372,8 +399,11 @@ namespace MotorCtl
 
                 if ( bExtend == 1)
                 {
-                    CurveItem curve = gp.CurveList[0];
-                    curve.AddPoint((double)(timeStart++), (double)reg[gpAdr]);
+                    for (int i = 0; i < ptr_gp; i++)
+                    {
+                        CurveItem curve = gp.CurveList[i];
+                        curve.AddPoint((double)(timeStart++), (double)reg[agpAdr[i]]);
+                    }
                     zd.AxisChange();
                     zd.Refresh();
                 }
@@ -589,7 +619,7 @@ namespace MotorCtl
 
                 gp.Title = "Data trend diagram";
                 //gp.PaneFill.Color = Color.DarkBlue;
-                gp.AxisFill.Color = Color.DarkBlue;
+                gp.AxisFill.Color = Color.White;
                 this.Controls.Add(zd);
 
                 btClose.Location = new Point(1070, 22);
@@ -609,18 +639,22 @@ namespace MotorCtl
                 this.Controls.Add(btnWriteData);
 
             }
-            else
-            {
-                gp.CurveList.Clear();
-            }
+
+            if (ptr_gp > 9)
+                return ;
+
+            for(int i=0 ; i < ptr_gp ;i++)
+                if ( e.RowIndex == agpAdr[i])
+                    return ;
 
             PointPairList ppl = new PointPairList() ;
-            gpName = gridData.Rows[e.RowIndex].Cells[0].Value.ToString();
-            gp.AddCurve(gpName, ppl, Color.Red, SymbolType.None);
-            timeStart = 0;
-            gpAdr = e.RowIndex; 
+            agpName[ptr_gp] = gridData.Rows[e.RowIndex].Cells[0].Value.ToString();
+            agpAdr[ptr_gp] = e.RowIndex; 
+            gp.AddCurve(agpName[ptr_gp], ppl,agclr[ptr_gp], SymbolType.None);
             zd.Refresh();
+
             bExtend = 1;
+            ptr_gp++;
        }
 
         private void lstCmd_DoubleClick(object sender, EventArgs e)
@@ -639,7 +673,7 @@ namespace MotorCtl
 
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Text file(*.txt)|*.txt|All file|*.*";      //设置文件类型
-            sfd.FileName = gpName;//设置默认文件名
+            sfd.FileName = agpName[0] ;//设置默认文件名
             sfd.DefaultExt = "txt";//设置默认格式（可以不设）
             sfd.AddExtension = true;//设置自动在文件名中添加扩展名
             if (sfd.ShowDialog()==DialogResult.OK)
@@ -647,12 +681,15 @@ namespace MotorCtl
                 try
                 {
                     StreamWriter fil = new StreamWriter(sfd.FileName);
-                    CurveItem curve = gp.CurveList[0];
-                    fil.WriteLine("Cycle,Value");
-                    for (int i = 0; i < curve.Points.Count; i++)
+                    for (int k = 0; k < ptr_gp; k++)
                     {
-                        txtLine = string.Format("{0},{1}", curve.Points[i].X, curve.Points[i].Y);
-                        fil.WriteLine(txtLine);
+                        CurveItem curve = gp.CurveList[k];
+                        fil.WriteLine("Cycle,Value----------------" + agpName[k]);
+                        for (int i = 0; i < curve.Points.Count; i++)
+                        {
+                            txtLine = string.Format("{0},{1}", curve.Points[i].X, curve.Points[i].Y);
+                            fil.WriteLine(txtLine);
+                        }
                     }
                     fil.Close();
                 }
@@ -671,6 +708,8 @@ namespace MotorCtl
             btClose.Location = new Point(546, 22);
             this.Size = new Size(672, 860);
             bExtend = 0;
+            ptr_gp = 0;
+            timeStart = 0;
         }
 
 
