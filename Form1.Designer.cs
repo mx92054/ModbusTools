@@ -622,7 +622,8 @@
             this.labRecv.Name = "labRecv";
             this.labRecv.Size = new System.Drawing.Size(640, 84);
             this.labRecv.TabIndex = 1;
-            this.labRecv.Text = "Modbus:";
+            this.labRecv.Text = "Modbus Tools可以作为RTU、ASCII或TCP传输模式下的MODBUS协议主设备的应用程序。把一个或多个MODBUS从站设备通过串口，调制解调器或者网" +
+                "络连接到电脑上，通过这个软件读取和修改数据，同时软件具备寄存器数据的趋势显示和记录功能。";
             // 
             // labSend
             // 
