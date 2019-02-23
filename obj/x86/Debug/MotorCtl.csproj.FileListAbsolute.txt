@@ -48,3 +48,14 @@ E:\Developer\ModbusTools\MotorCtl\obj\x86\Debug\MotorCtl.csprojResolveAssemblyRe
 E:\Developer\ModbusTools\MotorCtl\obj\x86\Debug\MotorCtl.frMain.resources
 E:\Developer\ModbusTools\MotorCtl\obj\x86\Debug\MotorCtl.Properties.Resources.resources
 E:\Developer\ModbusTools\MotorCtl\obj\x86\Debug\MotorCtl.csproj.GenerateResource.Cache
+E:\mcu_pjt\ModbusTools\obj\x86\Debug\MotorCtl.exe
+E:\mcu_pjt\ModbusTools\obj\x86\Debug\MotorCtl.pdb
+E:\mcu_pjt\ModbusTools\obj\x86\Debug\MotorCtl.csprojResolveAssemblyReference.cache
+E:\mcu_pjt\ModbusTools\obj\x86\Debug\MotorCtl.frMain.resources
+E:\mcu_pjt\ModbusTools\obj\x86\Debug\MotorCtl.Properties.Resources.resources
+E:\mcu_pjt\ModbusTools\obj\x86\Debug\MotorCtl.csproj.GenerateResource.Cache
+E:\mcu_pjt\ModbusTools\bin\Debug\MotorCtl.exe.config
+E:\mcu_pjt\ModbusTools\bin\Debug\MotorCtl.exe
+E:\mcu_pjt\ModbusTools\bin\Debug\WSMBS.xml
+E:\mcu_pjt\ModbusTools\bin\Debug\WSMBT.xml
+E:\mcu_pjt\ModbusTools\bin\Debug\MotorCtl.pdb

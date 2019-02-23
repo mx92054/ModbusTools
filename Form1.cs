@@ -34,6 +34,7 @@ namespace MotorCtl
         private int timeStart = 0;
         private int gpAdr;
         private Button btnWriteData;
+        private Button btnCompress;
         private string gpName;
         private int[] m_Count;
 
@@ -591,12 +592,20 @@ namespace MotorCtl
                 gp.AxisFill.Color = Color.DarkBlue;
                 this.Controls.Add(zd);
 
+                btnCompress = new Button();
+                btnCompress.Text = "<<";
+                btnCompress.Size = new Size(100, 30);
+                btnCompress.Location = new Point(940, 22);
+                btnCompress.Click += btnCompress_Click;
+                this.Controls.Add(btnCompress);
+
                 btnWriteData = new Button();
                 btnWriteData.Text = "Save";
                 btnWriteData.Size = new Size(100,30);
                 btnWriteData.Location = new Point(1070,22);
                 btnWriteData.Click += btnWriteData_Click;
                 this.Controls.Add(btnWriteData);
+
             }
             else
             {
@@ -651,6 +660,16 @@ namespace MotorCtl
                 }
              }
         }
+
+        private void btnCompress_Click(object sender, EventArgs e)
+        {
+            Controls.Remove(btnCompress);
+            Controls.Remove(btnWriteData);
+            Controls.Remove(zd);
+            this.Size = new Size(672, 860);
+            bExtend = 0;
+        }
+
 
         private void numCycle_ValueChanged(object sender, EventArgs e)
         {
