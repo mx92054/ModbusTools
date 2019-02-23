@@ -39,6 +39,8 @@ namespace MotorCtl
 
         private int timeStart = 0;
         private int[] agpAdr = new int[10];
+        private int[] agpStartAdr = new int[10];
+        private int[] agpCmdNo = new int[10];
         private string[] agpName = new string[10];
         private int ptr_gp = 0;
         private Color[] agclr = new Color[10] { Color.Red, Color.Purple, Color.Pink,Color.Plum,Color.Peru,Color.PaleTurquoise,Color.PowderBlue,Color.RosyBrown,Color.SlateBlue,Color.SlateGray};
@@ -69,7 +71,7 @@ namespace MotorCtl
                     if (resT == WSMBT.Result.SUCCESS)
                         IsConnect = true;
                     else
-                        MessageBox.Show("Connect failure! (" + resT.ToString() + ")","Alarm");
+                        MessageBox.Show("连接错误! (" + resT.ToString() + ")","Alarm");
                 }
                 else
                 {
@@ -88,7 +90,7 @@ namespace MotorCtl
                     if ( resS == WSMBS.Result.SUCCESS)
                         IsConnect = true;
                     else
-                        MessageBox.Show("Connect failure! (" + resS.ToString() + ")", "Alarm");
+                        MessageBox.Show("连接错误! (" + resS.ToString() + ")", "Alarm");
                 }
             }
             catch (Exception ex)
@@ -116,17 +118,13 @@ namespace MotorCtl
             btnDisconnect.Enabled = false;
             btConnect.Enabled = true;
             btExec.Enabled = false;
+            btnSupend.Enabled = false;
         }
 
         private void btExec_Click(object sender, EventArgs e)
         {
-            bool bSameCmdNo = false;
-            int  last_adr = m_nAddr ;
-
             WSMBS.Result sRes = WSMBS.Result.SUCCESS ;
             WSMBT.Result tRes = WSMBT.Result.SUCCESS ;
-
-            if (m_nCmdNo == lstCmd.SelectedIndex) bSameCmdNo = true;
 
             m_nAddr = (ushort)numStartAdr.Value;
             m_nLength = (ushort)numCount.Value;
@@ -176,7 +174,7 @@ namespace MotorCtl
 
             if (n != 0)
             {
-                string str = "Send:";
+                string str = "发送帧:";
                 for (int i = 0; i < n; i++)
                 {
                     str += string.Format("{0:X2} ", txbuf[i]);
@@ -189,9 +187,9 @@ namespace MotorCtl
             if (sRes != WSMBS.Result.SUCCESS || tRes != WSMBT.Result.SUCCESS)
             {
                 if ( m_curInterface == 2 )
-                    MessageBox.Show("Read failure!  (" + tRes.ToString() + ")");
+                    MessageBox.Show("读控制站错误!  (" + tRes.ToString() + ")");
                 else
-                    MessageBox.Show("Read failure!  (" + sRes.ToString() + ")");
+                    MessageBox.Show("读控制站错误!  (" + sRes.ToString() + ")");
                 picConn.Enabled = false;
             }
             else
@@ -228,10 +226,11 @@ namespace MotorCtl
                     int address ;
                     for(int i=0 ; i < ptr_gp ; i++)
                     {
-                        address = last_adr + agpAdr[ptr_gp] ;
-                        if (bSameCmdNo && address >= m_nAddr && address < (m_nAddr + m_nLength))
-                        {
+                        address = agpStartAdr[i] + agpAdr[i] ;
+                        if (agpCmdNo[i] == m_nCmdNo && address >= m_nAddr && address < (m_nAddr + m_nLength))
+                        {                            
                             agpAdr[i] = address - m_nAddr;
+                            agpStartAdr[i] = m_nAddr;
                         }
                         else
                             bLast = true ;
@@ -240,16 +239,17 @@ namespace MotorCtl
                     {
                         bExtend = 2;
                         gp.CurveList.Clear();
+                        zd.Refresh();
                         ptr_gp = 0;
                         timeStart = 0;
                     }
                     
                 }
 
+                btnSupend.Enabled = true;
                 timer1.Interval = (int)numCycle.Value;
                 timer1.Enabled = true;
                 picConn.Enabled = true;
-
             }
         }
 
@@ -271,6 +271,9 @@ namespace MotorCtl
             txtIPAdr.Text = ini.ReadString("Para", "IP Address", "127.0.0.1");
             numPortNo.Value = ini.ReadInt("Para", "Port No", 502);
 
+            for (int i = 0; i < 4; i++)
+                m_Count[i] = ini.ReadInt("Para", "LengthN" + i.ToString(), 100);
+
             numStartAdr.Value = m_perAdr[lstCmd.SelectedIndex];         //ini.ReadInt("Para", "Start Address", 0);
 
             m_perAdr[lstCmd.SelectedIndex] = (ushort)numStartAdr.Value;
@@ -286,8 +289,8 @@ namespace MotorCtl
 
             if (m_curInterface != 2)
             {
-                labText1.Text = "Serial";
-                labText2.Text = "Baud Rate";
+                labText1.Text = "串口号:";
+                labText2.Text = "波特率:";
                 cbSerial.Visible = true;
                 cbBaudrate.Visible = true;
                 txtIPAdr.Visible = false;
@@ -479,7 +482,7 @@ namespace MotorCtl
                             case 2:
                                 res = serial.WriteMultipleRegisters((byte)numStation.Value, adr, 1, regs);
                                 if ( res != WSMBS.Result.SUCCESS)
-                                    MessageBox.Show("WriteMultipleRegisters error! (" + res.ToString() + ")");
+                                    MessageBox.Show("写寄存器错误! (" + res.ToString() + ")");
                                 //serial.WriteSingleRegister((byte)numStation.Value, adr, (short)val);
                                 break;
                         }
@@ -497,8 +500,8 @@ namespace MotorCtl
 
             if (cbInterface.SelectedIndex != 2)
             {
-                labText1.Text = "Serial";
-                labText2.Text = "Baud Rate";
+                labText1.Text = "串口号:";
+                labText2.Text = "波特率:";
                 cbSerial.Visible = true;
                 cbBaudrate.Visible = true;
                 txtIPAdr.Visible = false;
@@ -508,8 +511,8 @@ namespace MotorCtl
             }
             else
             {
-                labText1.Text = "IP Address";
-                labText2.Text = "Port";
+                labText1.Text = "IP地址:";
+                labText2.Text = "端口号:";
                 cbSerial.Visible = false;
                 cbBaudrate.Visible = false;
                 txtIPAdr.Visible = true;
@@ -540,6 +543,8 @@ namespace MotorCtl
             ini.WriteString("Para", "IP Address", txtIPAdr.Text);
             ini.WriteInt("Para", "Port No", (int)numPortNo.Value);
             ini.WriteInt("Para", "Start Address", (int)numStartAdr.Value);
+            for(int i=0 ; i < 4 ; i++)
+                ini.WriteInt("Para", "LengthN" + i.ToString(), (int)m_Count[i]);
             ini.WriteInt("Para", "Length", (int)numCount.Value);
             ini.WriteInt("Para", "Cycle", (int)numCycle.Value);
             ini.WriteInt("Para", "Serail", cbSerial.SelectedIndex);
@@ -615,21 +620,32 @@ namespace MotorCtl
                 zd.Location = new Point(670, 67);
                 zd.Size = new Size(500, oldsize.Height - 117);
 
+                GraphPane pan = zd.GraphPane;
+ 
+                pan.XAxis.Title = "Counter";
+                pan.XAxis.IsShowGrid = true;
+                pan.XAxis.TitleFontSpec.Size = 10;
+                pan.XAxis.ScaleFontSpec.Size = 8;
+                pan.XAxis.Color = Color.WhiteSmoke;
+                pan.XAxis.GridColor = Color.WhiteSmoke;
+                
+                pan.YAxis.IsShowGrid = true;
+                pan.YAxis.TitleFontSpec.Size = 10;
+                pan.YAxis.ScaleFontSpec.Size = 8;
+                pan.YAxis.IsShowTitle = false;
+                pan.YAxis.Color = Color.WhiteSmoke;
+                pan.YAxis.GridColor = Color.WhiteSmoke;
+
+                // Fill the axis area with a gradient                
+                pan.AxisFill = new Fill(Color.Black, Color.Black, 90F);
+                // Fill the pane area with a solid color
+                pan.PaneFill = new Fill(Color.White);
+              
+
                 gp = zd.GraphPane;
-                gp.FontSpec.Size = 16;
+                gp.IsShowTitle = false;
+                gp.Legend.FontSpec.Size = 8;
 
-                gp.XAxis.ScaleFontSpec.Size = 10;
-                gp.XAxis.IsShowGrid = true;
-                gp.XAxis.Title = "Time/cycle";
-                gp.XAxis.Color = Color.Salmon;
-
-                gp.YAxis.IsShowGrid = true;
-                gp.YAxis.ScaleFontSpec.Size = 10;
-                gp.YAxis.Title = "Value";
-                gp.YAxis.Color = Color.Salmon;
-
-                gp.Title = "Data trend diagram";
-                //gp.PaneFill.Color = Color.DarkBlue;
                 gp.AxisFill.Color = Color.White;
                 this.Controls.Add(zd);
 
@@ -643,7 +659,7 @@ namespace MotorCtl
                 this.Controls.Add(btnCompress);
 
                 btnWriteData = new Button();
-                btnWriteData.Text = "Save";
+                btnWriteData.Text = "保存";
                 btnWriteData.Size = new Size(100,30);
                 btnWriteData.Location = new Point(940,22);
                 btnWriteData.Click += btnWriteData_Click;
@@ -660,7 +676,9 @@ namespace MotorCtl
 
             PointPairList ppl = new PointPairList() ;
             agpName[ptr_gp] = gridData.Rows[e.RowIndex].Cells[0].Value.ToString();
-            agpAdr[ptr_gp] = e.RowIndex; 
+            agpAdr[ptr_gp] = e.RowIndex;
+            agpStartAdr[ptr_gp] = m_nAddr;
+            agpCmdNo[ptr_gp] = m_nCmdNo;
             gp.AddCurve(agpName[ptr_gp], ppl,agclr[ptr_gp], SymbolType.None);
             zd.Refresh();
 
@@ -716,7 +734,7 @@ namespace MotorCtl
             Controls.Remove(btnCompress);
             Controls.Remove(btnWriteData);
             Controls.Remove(zd);
-            btClose.Location = new Point(546, 22);
+            btClose.Location = new Point(557, 22);
             this.Size = new Size(669, 870);
             bExtend = 0;
             ptr_gp = 0;
@@ -814,6 +832,12 @@ namespace MotorCtl
             }
             finally
             { strs = null; }
+        }
+
+        private void btnSupend_Click(object sender, EventArgs e)
+        {
+             btnSupend.Enabled = false;
+             timer1.Enabled = false;
         }
     }
 }
