@@ -77,6 +77,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.labRecv = new System.Windows.Forms.Label();
             this.labSend = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picConn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStation)).BeginInit();
@@ -113,7 +114,7 @@
             this.btExec.Name = "btExec";
             this.btExec.Size = new System.Drawing.Size(78, 37);
             this.btExec.TabIndex = 3;
-            this.btExec.Text = "开始[&S]";
+            this.btExec.Text = "开始[&A]";
             this.btExec.UseVisualStyleBackColor = true;
             this.btExec.Click += new System.EventHandler(this.btExec_Click);
             // 
@@ -428,11 +429,13 @@
             // labText1
             // 
             this.labText1.AutoSize = true;
+            this.labText1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.labText1.Location = new System.Drawing.Point(11, 67);
             this.labText1.Name = "labText1";
             this.labText1.Size = new System.Drawing.Size(72, 17);
             this.labText1.TabIndex = 7;
             this.labText1.Text = "IP地址：";
+            this.labText1.Click += new System.EventHandler(this.labText1_Click);
             // 
             // cbInterface
             // 
@@ -635,6 +638,12 @@
             this.labSend.TabIndex = 0;
             this.labSend.Text = "发送帧：";
             // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 2000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // frMain
             // 
             this.AcceptButton = this.btExec;
@@ -730,6 +739,7 @@
         private System.Windows.Forms.Button btnSupend;
         private System.Windows.Forms.DataGridViewTextBoxColumn Index;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

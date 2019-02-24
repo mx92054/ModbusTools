@@ -35,7 +35,10 @@ namespace MotorCtl
         private Button btnWriteData;
         private Button btnCompress;
         private int[] m_Count;
-        private string[] astr_com;
+        private bool bLoadFin = false ;
+        private Size ScreenSize;    //屏幕尺寸
+        private Point curProgPnt;   //程序位置
+        private Size curProgSize;   //程序尺寸
 
         private int timeStart = 0;
         private int[] agpAdr = new int[10];
@@ -318,7 +321,6 @@ namespace MotorCtl
             {
                 cbSerial.Items.Add(vPortName);
             }
-            astr_com = SerialPort.GetPortNames() ;
 
             k = ini.ReadInt("Para", "Serail", 0);
             if (cbSerial.Items.Count > k)
@@ -342,6 +344,11 @@ namespace MotorCtl
             }
             cbCSVFile.Text = ini.ReadString("Para", "CSV File", "Alais.csv");
             ReadCSVFile(cbCSVFile.Text);
+
+            ScreenSize = new Size(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height);
+            curProgPnt = this.Location;
+            curProgSize = this.Size;
+            bLoadFin = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -614,24 +621,25 @@ namespace MotorCtl
 
             if (bExtend == 0)
             {
-                Size oldsize = this.Size;
-                this.Size = new Size(1200, oldsize.Height);
+                this.Size = new Size(ScreenSize.Width, curProgSize.Height);
+                this.Location = new Point(0, curProgPnt.Y);
+
                 zd = new ZedGraphControl();
                 zd.Location = new Point(670, 67);
-                zd.Size = new Size(500, oldsize.Height - 117);
+                zd.Size = new Size(ScreenSize.Width - 700, curProgSize.Height - 117);
 
                 GraphPane pan = zd.GraphPane;
  
                 pan.XAxis.Title = "Counter";
                 pan.XAxis.IsShowGrid = true;
-                pan.XAxis.TitleFontSpec.Size = 10;
-                pan.XAxis.ScaleFontSpec.Size = 8;
+                pan.XAxis.TitleFontSpec.Size = 5;
+                pan.XAxis.ScaleFontSpec.Size = 5;
                 pan.XAxis.Color = Color.WhiteSmoke;
                 pan.XAxis.GridColor = Color.WhiteSmoke;
                 
                 pan.YAxis.IsShowGrid = true;
-                pan.YAxis.TitleFontSpec.Size = 10;
-                pan.YAxis.ScaleFontSpec.Size = 8;
+                pan.YAxis.TitleFontSpec.Size = 5;
+                pan.YAxis.ScaleFontSpec.Size = 5;
                 pan.YAxis.IsShowTitle = false;
                 pan.YAxis.Color = Color.WhiteSmoke;
                 pan.YAxis.GridColor = Color.WhiteSmoke;
@@ -644,24 +652,24 @@ namespace MotorCtl
 
                 gp = zd.GraphPane;
                 gp.IsShowTitle = false;
-                gp.Legend.FontSpec.Size = 8;
+                gp.Legend.FontSpec.Size = 5;
 
                 gp.AxisFill.Color = Color.White;
                 this.Controls.Add(zd);
 
-                btClose.Location = new Point(1070, 22);
+                btClose.Location = new Point(ScreenSize.Width - 120, 22);
 
                 btnCompress = new Button();
                 btnCompress.Text = "<<";
                 btnCompress.Size = new Size(100, 30);
-                btnCompress.Location = new Point(810, 22);
+                btnCompress.Location = new Point(ScreenSize.Width - 320, 22);
                 btnCompress.Click += btnCompress_Click;
                 this.Controls.Add(btnCompress);
 
                 btnWriteData = new Button();
-                btnWriteData.Text = "保存";
+                btnWriteData.Text = "保存[&S]";
                 btnWriteData.Size = new Size(100,30);
-                btnWriteData.Location = new Point(940,22);
+                btnWriteData.Location = new Point(ScreenSize.Width - 220, 22);
                 btnWriteData.Click += btnWriteData_Click;
                 this.Controls.Add(btnWriteData);
 
@@ -734,8 +742,9 @@ namespace MotorCtl
             Controls.Remove(btnCompress);
             Controls.Remove(btnWriteData);
             Controls.Remove(zd);
-            btClose.Location = new Point(557, 22);
-            this.Size = new Size(669, 870);
+            btClose.Location = new Point(557, 22) ;
+            this.Location = curProgPnt;
+            this.Size = curProgSize;
             bExtend = 0;
             ptr_gp = 0;
             timeStart = 0;
@@ -838,6 +847,30 @@ namespace MotorCtl
         {
              btnSupend.Enabled = false;
              timer1.Enabled = false;
+        }
+
+        private void labText1_Click(object sender, EventArgs e)
+        {
+            string[] astr = MulGetHardwareInfo(HardwareEnum.Win32_PnPEntity, "Name");
+            for (int i = cbSerial.Items.Count - 1; i > 0; i--)
+            {
+                if (!astr.Contains(cbSerial.Items[i].ToString()))
+                    cbSerial.Items.RemoveAt(i);
+            }
+
+            foreach (string vPortName in astr)
+            {
+                if (!cbSerial.Items.Contains(vPortName))
+                    cbSerial.Items.Add(vPortName);
+            }
+            cbSerial.Refresh();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (timer1.Enabled)
+                return;
+            labText1_Click(sender, e);
         }
     }
 }
