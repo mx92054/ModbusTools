@@ -109,7 +109,7 @@
             // btExec
             // 
             this.btExec.Enabled = false;
-            this.btExec.Font = new System.Drawing.Font("Cooper Black", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btExec.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btExec.Location = new System.Drawing.Point(50, 329);
             this.btExec.Name = "btExec";
             this.btExec.Size = new System.Drawing.Size(78, 37);
@@ -147,7 +147,7 @@
             // btnSupend
             // 
             this.btnSupend.Enabled = false;
-            this.btnSupend.Font = new System.Drawing.Font("Cooper Black", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupend.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupend.Location = new System.Drawing.Point(134, 329);
             this.btnSupend.Name = "btnSupend";
             this.btnSupend.Size = new System.Drawing.Size(88, 37);

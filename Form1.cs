@@ -269,6 +269,26 @@ namespace MotorCtl
 
             lstCmd.SelectedIndex = ini.ReadInt("Para", "Command", 2);
             cbInterface.SelectedIndex = ini.ReadInt("Para","Interface",2) ;
+
+            if (cbInterface.SelectedIndex != 2)
+            {
+                labText1.Text = "串口号:";
+                labText2.Text = "波特率:";
+                cbSerial.Visible = true;
+                cbBaudrate.Visible = true;
+                txtIPAdr.Visible = false;
+                numPortNo.Visible = false;
+            }
+            else
+            {
+                labText1.Text = "IP地址:";
+                labText2.Text = "端口号:";
+                cbSerial.Visible = false;
+                cbBaudrate.Visible = false;
+                txtIPAdr.Visible = true;
+                numPortNo.Visible = true;
+            }
+
             m_curInterface = cbInterface.SelectedIndex;
             strFmtByte = ini.ReadString("Para", "Display", "X");
             txtIPAdr.Text = ini.ReadString("Para", "IP Address", "127.0.0.1");
@@ -290,22 +310,6 @@ namespace MotorCtl
             else
                 ckDispAlais.Checked = true;
 
-            if (m_curInterface != 2)
-            {
-                labText1.Text = "串口号:";
-                labText2.Text = "波特率:";
-                cbSerial.Visible = true;
-                cbBaudrate.Visible = true;
-                txtIPAdr.Visible = false;
-                numPortNo.Visible = false;
-                labText1.Refresh();
-                labText2.Refresh();
-                label5.Enabled = true;
-            }
-            else
-            {
-                label5.Enabled = false;
-            }
 
             if (strFmtByte == "D")
             {
@@ -513,8 +517,6 @@ namespace MotorCtl
                 cbBaudrate.Visible = true;
                 txtIPAdr.Visible = false;
                 numPortNo.Visible = false;
-                label5.Enabled = true;
-                numStation.Enabled = true;
             }
             else
             {
@@ -524,8 +526,6 @@ namespace MotorCtl
                 cbBaudrate.Visible = false;
                 txtIPAdr.Visible = true;
                 numPortNo.Visible = true;
-                label5.Enabled = false;
-                numStation.Enabled = false;
             }
             labText1.Refresh();
             labText2.Refresh();            
