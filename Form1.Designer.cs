@@ -113,7 +113,7 @@
             this.btExec.Location = new System.Drawing.Point(50, 329);
             this.btExec.Name = "btExec";
             this.btExec.Size = new System.Drawing.Size(78, 37);
-            this.btExec.TabIndex = 3;
+            this.btExec.TabIndex = 7;
             this.btExec.Text = "开始[&A]";
             this.btExec.UseVisualStyleBackColor = true;
             this.btExec.Click += new System.EventHandler(this.btExec_Click);
@@ -140,7 +140,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 218);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(226, 384);
-            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "寄存器";
             // 
@@ -151,7 +151,7 @@
             this.btnSupend.Location = new System.Drawing.Point(134, 329);
             this.btnSupend.Name = "btnSupend";
             this.btnSupend.Size = new System.Drawing.Size(88, 37);
-            this.btnSupend.TabIndex = 15;
+            this.btnSupend.TabIndex = 8;
             this.btnSupend.Text = "暂停[&T]";
             this.btnSupend.UseVisualStyleBackColor = true;
             this.btnSupend.Click += new System.EventHandler(this.btnSupend_Click);
@@ -179,7 +179,7 @@
             this.lstCmd.Location = new System.Drawing.Point(16, 79);
             this.lstCmd.Name = "lstCmd";
             this.lstCmd.Size = new System.Drawing.Size(201, 72);
-            this.lstCmd.TabIndex = 13;
+            this.lstCmd.TabIndex = 1;
             this.lstCmd.SelectedIndexChanged += new System.EventHandler(this.lstCmd_SelectedIndexChanged);
             this.lstCmd.DoubleClick += new System.EventHandler(this.lstCmd_DoubleClick);
             // 
@@ -202,7 +202,7 @@
             0});
             this.numStation.Name = "numStation";
             this.numStation.Size = new System.Drawing.Size(109, 24);
-            this.numStation.TabIndex = 1;
+            this.numStation.TabIndex = 0;
             this.numStation.Value = new decimal(new int[] {
             1,
             0,
@@ -235,7 +235,7 @@
             this.rdHex.Location = new System.Drawing.Point(152, 251);
             this.rdHex.Name = "rdHex";
             this.rdHex.Size = new System.Drawing.Size(73, 18);
-            this.rdHex.TabIndex = 11;
+            this.rdHex.TabIndex = 5;
             this.rdHex.TabStop = true;
             this.rdHex.Text = "十六进制";
             this.rdHex.UseVisualStyleBackColor = true;
@@ -248,7 +248,7 @@
             this.rdDec.Location = new System.Drawing.Point(93, 251);
             this.rdDec.Name = "rdDec";
             this.rdDec.Size = new System.Drawing.Size(61, 18);
-            this.rdDec.TabIndex = 9;
+            this.rdDec.TabIndex = 4;
             this.rdDec.Text = "十进制";
             this.rdDec.UseVisualStyleBackColor = true;
             this.rdDec.CheckedChanged += new System.EventHandler(this.rdDec_CheckedChanged);
@@ -268,7 +268,7 @@
             0});
             this.numCycle.Name = "numCycle";
             this.numCycle.Size = new System.Drawing.Size(105, 24);
-            this.numCycle.TabIndex = 1;
+            this.numCycle.TabIndex = 6;
             this.numCycle.Value = new decimal(new int[] {
             1000,
             0,
@@ -295,7 +295,7 @@
             0});
             this.numCount.Name = "numCount";
             this.numCount.Size = new System.Drawing.Size(105, 24);
-            this.numCount.TabIndex = 1;
+            this.numCount.TabIndex = 3;
             this.numCount.Value = new decimal(new int[] {
             10,
             0,
@@ -312,7 +312,7 @@
             0});
             this.numStartAdr.Name = "numStartAdr";
             this.numStartAdr.Size = new System.Drawing.Size(105, 24);
-            this.numStartAdr.TabIndex = 6;
+            this.numStartAdr.TabIndex = 2;
             this.numStartAdr.Value = new decimal(new int[] {
             20000,
             0,
@@ -344,7 +344,7 @@
             this.btnDisconnect.Margin = new System.Windows.Forms.Padding(4);
             this.btnDisconnect.Name = "btnDisconnect";
             this.btnDisconnect.Size = new System.Drawing.Size(91, 37);
-            this.btnDisconnect.TabIndex = 5;
+            this.btnDisconnect.TabIndex = 8;
             this.btnDisconnect.Text = "断开[&D]";
             this.btnDisconnect.UseVisualStyleBackColor = true;
             this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
@@ -369,7 +369,7 @@
             this.groupBox2.Location = new System.Drawing.Point(8, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(226, 200);
-            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "通信端口参数";
             // 
@@ -380,7 +380,7 @@
             this.cbBaudrate.Location = new System.Drawing.Point(93, 96);
             this.cbBaudrate.Name = "cbBaudrate";
             this.cbBaudrate.Size = new System.Drawing.Size(127, 27);
-            this.cbBaudrate.TabIndex = 1;
+            this.cbBaudrate.TabIndex = 5;
             this.cbBaudrate.Visible = false;
             // 
             // cbSerial
@@ -390,7 +390,7 @@
             this.cbSerial.Location = new System.Drawing.Point(68, 65);
             this.cbSerial.Name = "cbSerial";
             this.cbSerial.Size = new System.Drawing.Size(152, 22);
-            this.cbSerial.TabIndex = 11;
+            this.cbSerial.TabIndex = 1;
             // 
             // numPortNo
             // 
@@ -402,7 +402,7 @@
             0});
             this.numPortNo.Name = "numPortNo";
             this.numPortNo.Size = new System.Drawing.Size(127, 24);
-            this.numPortNo.TabIndex = 10;
+            this.numPortNo.TabIndex = 6;
             this.numPortNo.Value = new decimal(new int[] {
             502,
             0,
@@ -414,7 +414,7 @@
             this.txtIPAdr.Location = new System.Drawing.Point(93, 64);
             this.txtIPAdr.Name = "txtIPAdr";
             this.txtIPAdr.Size = new System.Drawing.Size(127, 24);
-            this.txtIPAdr.TabIndex = 9;
+            this.txtIPAdr.TabIndex = 2;
             this.txtIPAdr.Text = "127.0.0.1";
             // 
             // labText2
@@ -447,7 +447,7 @@
             this.cbInterface.Location = new System.Drawing.Point(7, 24);
             this.cbInterface.Name = "cbInterface";
             this.cbInterface.Size = new System.Drawing.Size(214, 25);
-            this.cbInterface.TabIndex = 6;
+            this.cbInterface.TabIndex = 0;
             // 
             // btConnect
             // 
@@ -455,7 +455,7 @@
             this.btConnect.Margin = new System.Windows.Forms.Padding(4);
             this.btConnect.Name = "btConnect";
             this.btConnect.Size = new System.Drawing.Size(91, 37);
-            this.btConnect.TabIndex = 1;
+            this.btConnect.TabIndex = 7;
             this.btConnect.Text = "连接[&C]";
             this.btConnect.UseVisualStyleBackColor = true;
             this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
@@ -551,7 +551,7 @@
             this.btClose.Margin = new System.Windows.Forms.Padding(4);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(93, 30);
-            this.btClose.TabIndex = 0;
+            this.btClose.TabIndex = 3;
             this.btClose.Text = "退出[&E]";
             this.btClose.UseVisualStyleBackColor = false;
             this.btClose.Click += new System.EventHandler(this.btClose_Click);
@@ -572,7 +572,7 @@
             this.cbCSVFile.Location = new System.Drawing.Point(152, 16);
             this.cbCSVFile.Name = "cbCSVFile";
             this.cbCSVFile.Size = new System.Drawing.Size(140, 25);
-            this.cbCSVFile.TabIndex = 13;
+            this.cbCSVFile.TabIndex = 1;
             this.cbCSVFile.SelectedIndexChanged += new System.EventHandler(this.cbCSVFile_SelectedIndexChanged);
             // 
             // label9
@@ -581,7 +581,7 @@
             this.label9.Location = new System.Drawing.Point(66, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 17);
-            this.label9.TabIndex = 14;
+            this.label9.TabIndex = 2;
             this.label9.Text = "注释文件:";
             // 
             // ckDispAlais
@@ -603,7 +603,7 @@
             this.groupBox4.Location = new System.Drawing.Point(252, 12);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(298, 49);
-            this.groupBox4.TabIndex = 16;
+            this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "注释";
             // 
