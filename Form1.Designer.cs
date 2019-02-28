@@ -78,6 +78,7 @@
             this.labRecv = new System.Windows.Forms.Label();
             this.labSend = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.grpVal = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picConn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStation)).BeginInit();
@@ -91,6 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.grpVal.SuspendLayout();
             this.SuspendLayout();
             // 
             // serial
@@ -456,6 +458,7 @@
             this.btConnect.Name = "btConnect";
             this.btConnect.Size = new System.Drawing.Size(91, 37);
             this.btConnect.TabIndex = 7;
+            this.btConnect.Tag = "button";
             this.btConnect.Text = "连接[&C]";
             this.btConnect.UseVisualStyleBackColor = true;
             this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
@@ -468,14 +471,16 @@
             // 
             // gridData
             // 
+            this.gridData.AllowUserToAddRows = false;
+            this.gridData.AllowUserToDeleteRows = false;
             this.gridData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Index,
             this.Value});
-            this.gridData.Location = new System.Drawing.Point(253, 67);
+            this.gridData.Location = new System.Drawing.Point(6, 24);
             this.gridData.Name = "gridData";
             this.gridData.RowTemplate.Height = 23;
-            this.gridData.Size = new System.Drawing.Size(401, 642);
+            this.gridData.Size = new System.Drawing.Size(387, 608);
             this.gridData.TabIndex = 8;
             this.gridData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridData_CellDoubleClick);
             this.gridData.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridData_CellEndEdit);
@@ -621,6 +626,7 @@
             // labRecv
             // 
             this.labRecv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labRecv.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labRecv.Location = new System.Drawing.Point(3, 20);
             this.labRecv.Name = "labRecv";
             this.labRecv.Size = new System.Drawing.Size(640, 84);
@@ -631,10 +637,10 @@
             // labSend
             // 
             this.labSend.AutoSize = true;
-            this.labSend.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labSend.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labSend.Location = new System.Drawing.Point(12, 709);
             this.labSend.Name = "labSend";
-            this.labSend.Size = new System.Drawing.Size(72, 17);
+            this.labSend.Size = new System.Drawing.Size(63, 14);
             this.labSend.TabIndex = 0;
             this.labSend.Text = "发送帧：";
             // 
@@ -644,12 +650,24 @@
             this.timer2.Interval = 2000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // grpVal
+            // 
+            this.grpVal.Controls.Add(this.gridData);
+            this.grpVal.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpVal.Location = new System.Drawing.Point(250, 67);
+            this.grpVal.Name = "grpVal";
+            this.grpVal.Size = new System.Drawing.Size(399, 641);
+            this.grpVal.TabIndex = 18;
+            this.grpVal.TabStop = false;
+            this.grpVal.Text = "数据显示";
+            // 
             // frMain
             // 
             this.AcceptButton = this.btExec;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 841);
+            this.Controls.Add(this.grpVal);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.labSend);
             this.Controls.Add(this.groupBox4);
@@ -658,7 +676,6 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btClose);
-            this.Controls.Add(this.gridData);
             this.Font = new System.Drawing.Font("Constantia", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -685,6 +702,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            this.grpVal.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -740,6 +758,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Index;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.GroupBox grpVal;
     }
 }
 

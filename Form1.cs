@@ -182,7 +182,7 @@ namespace MotorCtl
                 {
                     str += string.Format("{0:X2} ", txbuf[i]);
                     if ((i + 1) % 5 == 0)
-                        str += "__";
+                        str += "_ ";
                 }
                 labSend.Text = str;
             }
@@ -221,6 +221,11 @@ namespace MotorCtl
                     else
                         this.gridData.Rows[no].Cells[0].Value = (m_nAddr + i).ToString() + " " + (m_nAddr + i).ToString("X") + "H ";
                     this.gridData.Rows[no].Cells[1].Value = (m_nCmdNo > 1) ? reg[i].ToString(strFmtByte) : sw[i].ToString();
+                    if ((i/10) % 2 == 0)
+                    {
+                        this.gridData.Rows[no].Cells[0].Style.BackColor = Color.LightGray;
+                        this.gridData.Rows[no].Cells[1].Style.BackColor = Color.LightBlue;
+                    }
                 }
 
                 if (bExtend == 1)
@@ -333,6 +338,7 @@ namespace MotorCtl
             cbBaudrate.Items.Add("9600");
             cbBaudrate.Items.Add("19200");
             cbBaudrate.Items.Add("38400");
+            cbBaudrate.Items.Add("57600");
             cbBaudrate.Items.Add("115200");
             cbBaudrate.SelectedIndex = ini.ReadInt("Para","Baudrate",0) ;            
 
@@ -412,7 +418,7 @@ namespace MotorCtl
                     {
                         str += string.Format("{0:X2} ", rxbuf[i]);
                         if (((i+1) % 5) == 0)
-                            str += "__";
+                            str += "_ ";
                     }
                     labRecv.Text = str;
                 }
