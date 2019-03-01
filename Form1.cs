@@ -126,6 +126,10 @@ namespace MotorCtl
 
         private void btExec_Click(object sender, EventArgs e)
         {
+            int col;
+            int row;
+            int no = 0 ;
+
             WSMBS.Result sRes = WSMBS.Result.SUCCESS ;
             WSMBT.Result tRes = WSMBT.Result.SUCCESS ;
 
@@ -198,14 +202,16 @@ namespace MotorCtl
             else
             {
                 int index = this.gridData.Rows.Add(); //得到当前控件的行数
-                for (int i = 0; i < index + 1; i++)
+                for (int i = 0; i < index + 1; i++) //删除表格中的所有行
                 {
                     gridData.Rows.RemoveAt(0);
                 }
 
                 for (int i = 0; i < m_nLength; i++)
                 {
-                    int no = this.gridData.Rows.Add();
+                    if (i % 2 == 0)
+                        no = this.gridData.Rows.Add();
+
                     int nFind = -1 ;
                     for (int k = 0; k < lsLen; k++)
                     {
@@ -216,15 +222,22 @@ namespace MotorCtl
                         }
                     }
 
-                    if (ckDispAlais.Checked && nFind != -1)
-                        this.gridData.Rows[no].Cells[0].Value = (m_nAddr + i).ToString() + " " + lsAlais[nFind];
+                    if (i % 2 == 0)
+                        col = 0;
                     else
-                        this.gridData.Rows[no].Cells[0].Value = (m_nAddr + i).ToString() + " " + (m_nAddr + i).ToString("X") + "H ";
-                    this.gridData.Rows[no].Cells[1].Value = (m_nCmdNo > 1) ? reg[i].ToString(strFmtByte) : sw[i].ToString();
+                        col = 2;
+
+                    if (ckDispAlais.Checked && nFind != -1)
+                        this.gridData.Rows[no].Cells[col].Value = (m_nAddr + i).ToString() + " " + lsAlais[nFind];
+                    else
+                        this.gridData.Rows[no].Cells[col].Value = (m_nAddr + i).ToString() + " " + (m_nAddr + i).ToString("X") + "H ";
+                    this.gridData.Rows[no].Cells[col + 1].Value = (m_nCmdNo > 1) ? reg[i].ToString(strFmtByte) : sw[i].ToString();
+
+
                     if ((i/10) % 2 == 0)
                     {
-                        this.gridData.Rows[no].Cells[0].Style.BackColor = Color.LightGray;
-                        this.gridData.Rows[no].Cells[1].Style.BackColor = Color.LightBlue;
+                        this.gridData.Rows[no].Cells[col].Style.BackColor = Color.LightGray;
+                        this.gridData.Rows[no].Cells[col + 1].Style.BackColor = Color.LightBlue;
                     }
                 }
 
@@ -355,6 +368,8 @@ namespace MotorCtl
             cbCSVFile.Text = ini.ReadString("Para", "CSV File", "Alais.csv");
             ReadCSVFile(cbCSVFile.Text);
 
+            gridData.Font = new Font("Consolas", 8);  
+
             ScreenSize = new Size(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height);
             curProgPnt = this.Location;
             curProgSize = this.Size;
@@ -363,6 +378,9 @@ namespace MotorCtl
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            int col = 1;
+            int row;
+
             WSMBS.Result sRes = WSMBS.Result.SUCCESS;
             WSMBT.Result tRes = WSMBT.Result.SUCCESS;
 
@@ -425,7 +443,12 @@ namespace MotorCtl
 
                 for (int i = 0; i < m_nLength; i++)
                 {
-                    gridData.Rows[i].Cells[1].Value = (m_nCmdNo > 1) ? reg[i].ToString(strFmtByte) : sw[i].ToString();
+                    row = i / 2;
+                    gridData.Rows[row].Cells[col].Value = (m_nCmdNo > 1) ? reg[i].ToString(strFmtByte) : sw[i].ToString();
+                    if (col == 1)
+                        col = 3;
+                    else
+                        col = 1;
                 }
 
                 if ( bExtend == 1)
@@ -462,20 +485,29 @@ namespace MotorCtl
         private void gridData_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             WSMBS.Result res;
+            ushort nIndex = 0;
+
+            if (e.ColumnIndex == 0 || e.ColumnIndex == 2)
+                return;
+
+            if (e.ColumnIndex == 1)
+                nIndex = (ushort)(2*e.RowIndex);
+            if (e.ColumnIndex == 3)
+                nIndex = (ushort)(2 * e.RowIndex + 1);
 
             try
             {
                 short val;
                 if (  strFmtByte == "D" )
-                    val = short.Parse(gridData.Rows[e.RowIndex].Cells[1].Value.ToString(), System.Globalization.NumberStyles.Integer);
+                    val = short.Parse(gridData.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), System.Globalization.NumberStyles.Integer);
                 else
-                    val = short.Parse(gridData.Rows[e.RowIndex].Cells[1].Value.ToString(), System.Globalization.NumberStyles.HexNumber);
+                    val = short.Parse(gridData.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), System.Globalization.NumberStyles.HexNumber);
 
                 short[] regs = new short[1];
                 regs[0] = val;
-                ushort adr = (ushort)(m_nAddr + e.RowIndex);
+                ushort adr = (ushort)(m_nAddr + nIndex);
                  bool coil = (val > 0) ? true : false;
-                if ( (val != reg[e.RowIndex] && m_nCmdNo == 2) || ( coil != sw[e.RowIndex] && m_nCmdNo == 0) )
+                 if ((val != reg[nIndex] && m_nCmdNo == 2) || (coil != sw[nIndex] && m_nCmdNo == 0))
                 {
                     if (m_curInterface == 2)
                     {
@@ -622,6 +654,8 @@ namespace MotorCtl
 
         private void gridData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            int nIndex;
+
             if (!picConn.Enabled)
                 return;
 
@@ -688,9 +722,19 @@ namespace MotorCtl
                 if ( e.RowIndex == agpAdr[i])
                     return ;
 
+
+            if (e.ColumnIndex == 0 || e.ColumnIndex == 1)
+            {
+                nIndex = 2 * e.RowIndex;
+                agpName[ptr_gp] = gridData.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+            else
+            {
+                nIndex = 2 * e.RowIndex + 1;
+                agpName[ptr_gp] = gridData.Rows[e.RowIndex].Cells[2].Value.ToString();
+            }
             PointPairList ppl = new PointPairList() ;
-            agpName[ptr_gp] = gridData.Rows[e.RowIndex].Cells[0].Value.ToString();
-            agpAdr[ptr_gp] = e.RowIndex;
+            agpAdr[ptr_gp] = nIndex;
             agpStartAdr[ptr_gp] = m_nAddr;
             agpCmdNo[ptr_gp] = m_nCmdNo;
             gp.AddCurve(agpName[ptr_gp], ppl,agclr[ptr_gp], SymbolType.None);
