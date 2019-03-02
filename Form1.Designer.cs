@@ -381,9 +381,9 @@
             // 
             this.cbBaudrate.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbBaudrate.FormattingEnabled = true;
-            this.cbBaudrate.Location = new System.Drawing.Point(93, 96);
+            this.cbBaudrate.Location = new System.Drawing.Point(70, 95);
             this.cbBaudrate.Name = "cbBaudrate";
-            this.cbBaudrate.Size = new System.Drawing.Size(81, 27);
+            this.cbBaudrate.Size = new System.Drawing.Size(105, 27);
             this.cbBaudrate.TabIndex = 5;
             this.cbBaudrate.Visible = false;
             // 
@@ -391,21 +391,21 @@
             // 
             this.cbSerial.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSerial.FormattingEnabled = true;
-            this.cbSerial.Location = new System.Drawing.Point(68, 65);
+            this.cbSerial.Location = new System.Drawing.Point(69, 64);
             this.cbSerial.Name = "cbSerial";
             this.cbSerial.Size = new System.Drawing.Size(106, 22);
             this.cbSerial.TabIndex = 1;
             // 
             // numPortNo
             // 
-            this.numPortNo.Location = new System.Drawing.Point(89, 98);
+            this.numPortNo.Location = new System.Drawing.Point(70, 98);
             this.numPortNo.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.numPortNo.Name = "numPortNo";
-            this.numPortNo.Size = new System.Drawing.Size(83, 24);
+            this.numPortNo.Size = new System.Drawing.Size(102, 24);
             this.numPortNo.TabIndex = 6;
             this.numPortNo.Value = new decimal(new int[] {
             502,
@@ -415,9 +415,9 @@
             // 
             // txtIPAdr
             // 
-            this.txtIPAdr.Location = new System.Drawing.Point(93, 64);
+            this.txtIPAdr.Location = new System.Drawing.Point(70, 64);
             this.txtIPAdr.Name = "txtIPAdr";
-            this.txtIPAdr.Size = new System.Drawing.Size(81, 24);
+            this.txtIPAdr.Size = new System.Drawing.Size(104, 24);
             this.txtIPAdr.TabIndex = 2;
             this.txtIPAdr.Text = "127.0.0.1";
             // 
@@ -481,10 +481,10 @@
             this.Value,
             this.Name2,
             this.Value2});
-            this.gridData.Location = new System.Drawing.Point(8, 23);
+            this.gridData.Location = new System.Drawing.Point(8, 17);
             this.gridData.Name = "gridData";
             this.gridData.RowTemplate.Height = 23;
-            this.gridData.Size = new System.Drawing.Size(424, 608);
+            this.gridData.Size = new System.Drawing.Size(424, 619);
             this.gridData.TabIndex = 8;
             this.gridData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridData_CellDoubleClick);
             this.gridData.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridData_CellEndEdit);
@@ -530,11 +530,12 @@
             // labRx
             // 
             this.labRx.AutoSize = true;
-            this.labRx.Location = new System.Drawing.Point(55, 77);
+            this.labRx.Location = new System.Drawing.Point(58, 77);
             this.labRx.Name = "labRx";
             this.labRx.Size = new System.Drawing.Size(14, 14);
             this.labRx.TabIndex = 13;
             this.labRx.Text = "0";
+            this.labRx.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label7
             // 
@@ -557,11 +558,12 @@
             // labTx
             // 
             this.labTx.AutoSize = true;
-            this.labTx.Location = new System.Drawing.Point(55, 36);
+            this.labTx.Location = new System.Drawing.Point(60, 36);
             this.labTx.Name = "labTx";
             this.labTx.Size = new System.Drawing.Size(14, 14);
             this.labTx.TabIndex = 12;
             this.labTx.Text = "0";
+            this.labTx.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // btClose
             // 
@@ -580,9 +582,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MotorCtl.Properties.Resources.idsse;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 614);
+            this.pictureBox1.Location = new System.Drawing.Point(8, 614);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(91, 92);
+            this.pictureBox1.Size = new System.Drawing.Size(91, 95);
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
@@ -631,7 +633,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.labRecv);
-            this.groupBox5.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(8, 729);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(646, 107);
@@ -643,9 +645,9 @@
             // 
             this.labRecv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labRecv.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labRecv.Location = new System.Drawing.Point(3, 20);
+            this.labRecv.Location = new System.Drawing.Point(3, 18);
             this.labRecv.Name = "labRecv";
-            this.labRecv.Size = new System.Drawing.Size(640, 84);
+            this.labRecv.Size = new System.Drawing.Size(640, 86);
             this.labRecv.TabIndex = 1;
             this.labRecv.Text = "Modbus Tools可以作为RTU、ASCII或TCP传输模式下的MODBUS协议主设备的应用程序。把一个或多个MODBUS从站设备通过串口，调制解调器或者网" +
                 "络连接到电脑上，通过这个软件读取和修改数据，同时软件具备寄存器数据的趋势显示和记录功能。";
@@ -654,7 +656,7 @@
             // 
             this.labSend.AutoSize = true;
             this.labSend.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labSend.Location = new System.Drawing.Point(12, 709);
+            this.labSend.Location = new System.Drawing.Point(110, 712);
             this.labSend.Name = "labSend";
             this.labSend.Size = new System.Drawing.Size(63, 14);
             this.labSend.TabIndex = 0;
@@ -672,7 +674,7 @@
             this.grpVal.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpVal.Location = new System.Drawing.Point(199, 67);
             this.grpVal.Name = "grpVal";
-            this.grpVal.Size = new System.Drawing.Size(450, 641);
+            this.grpVal.Size = new System.Drawing.Size(450, 642);
             this.grpVal.TabIndex = 18;
             this.grpVal.TabStop = false;
             this.grpVal.Text = "数据显示";
@@ -698,7 +700,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Modbus调试工具    (By IDSSE,CSA  chenm@idsse.ac.cn)";
+            this.Text = "Modbus调试工具    (by IDSSE,CSA  chenm@idsse.ac.cn)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frMain_FormClosing);
             this.Load += new System.EventHandler(this.frMain_Load);
             this.groupBox1.ResumeLayout(false);
