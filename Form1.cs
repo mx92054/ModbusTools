@@ -310,7 +310,7 @@ namespace MotorCtl
             }
 
             m_curInterface = cbInterface.SelectedIndex;
-            strFmtByte = ini.ReadString("Para", "Display", "X");
+            strFmtByte = ini.ReadString("Para", "Display", "X4");
             txtIPAdr.Text = ini.ReadString("Para", "IP Address", "127.0.0.1");
             numPortNo.Value = ini.ReadInt("Para", "Port No", 502);
 
@@ -326,9 +326,9 @@ namespace MotorCtl
             numStation.Value = ini.ReadInt("Para", "Station", 1);
             k = ini.ReadInt("Para", "Display Alais", 0);
             if (k == 0)
-                ckDispAlais.Checked = false;
+                ckHex.Checked = false;
             else
-                ckDispAlais.Checked = true;
+                ckHex.Checked = true;
 
 
             if (strFmtByte == "D")
@@ -594,7 +594,7 @@ namespace MotorCtl
             ini.WriteInt("Para", "Holding Adr", (int)m_perAdr[2]);
             ini.WriteInt("Para", "Input Adr", (int)m_perAdr[3]);
 
-            if (ckDispAlais.Checked )
+            if (ckHex.Checked )
                 ini.WriteInt("Para", "Display Alais", 1);
             else
                  ini.WriteInt("Para", "Display Alais", 0);
