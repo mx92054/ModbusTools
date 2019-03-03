@@ -33,6 +33,7 @@
             this.serial = new WSMBS.WSMBSControl(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ckHex = new System.Windows.Forms.CheckBox();
+            this.btnSupend = new System.Windows.Forms.Button();
             this.lstCmd = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
             this.numStation = new System.Windows.Forms.NumericUpDown();
@@ -44,15 +45,19 @@
             this.numStartAdr = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btExec = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbBaudrate = new System.Windows.Forms.ComboBox();
             this.cbSerial = new System.Windows.Forms.ComboBox();
+            this.picConn = new System.Windows.Forms.PictureBox();
             this.numPortNo = new System.Windows.Forms.NumericUpDown();
             this.txtIPAdr = new System.Windows.Forms.TextBox();
             this.labText2 = new System.Windows.Forms.Label();
             this.labText1 = new System.Windows.Forms.Label();
             this.cbInterface = new System.Windows.Forms.ComboBox();
+            this.btnDisconnect = new System.Windows.Forms.Button();
+            this.btConnect = new System.Windows.Forms.Button();
             this.tcpip = new WSMBT.WSMBTControl(this.components);
             this.gridData = new System.Windows.Forms.DataGridView();
             this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,12 +78,7 @@
             this.labSend = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.grpVal = new System.Windows.Forms.GroupBox();
-            this.btExec = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.picConn = new System.Windows.Forms.PictureBox();
-            this.btnDisconnect = new System.Windows.Forms.Button();
-            this.btConnect = new System.Windows.Forms.Button();
-            this.btnSupend = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStation)).BeginInit();
@@ -86,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStartAdr)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picConn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPortNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridData)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -93,7 +94,6 @@
             this.groupBox5.SuspendLayout();
             this.grpVal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picConn)).BeginInit();
             this.SuspendLayout();
             // 
             // serial
@@ -144,6 +144,19 @@
             this.ckHex.UseVisualStyleBackColor = true;
             this.ckHex.CheckedChanged += new System.EventHandler(this.ckHex_CheckedChanged);
             this.ckHex.EnabledChanged += new System.EventHandler(this.ckHex_EnabledChanged);
+            // 
+            // btnSupend
+            // 
+            this.btnSupend.BackgroundImage = global::MotorCtl.Properties.Resources.pause;
+            this.btnSupend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSupend.Enabled = false;
+            this.btnSupend.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupend.Location = new System.Drawing.Point(102, 303);
+            this.btnSupend.Name = "btnSupend";
+            this.btnSupend.Size = new System.Drawing.Size(68, 66);
+            this.btnSupend.TabIndex = 8;
+            this.btnSupend.UseVisualStyleBackColor = true;
+            this.btnSupend.Click += new System.EventHandler(this.btnSupend_Click);
             // 
             // lstCmd
             // 
@@ -289,6 +302,19 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "起始地址:";
             // 
+            // btExec
+            // 
+            this.btExec.BackgroundImage = global::MotorCtl.Properties.Resources.start256;
+            this.btExec.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btExec.Enabled = false;
+            this.btExec.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btExec.Location = new System.Drawing.Point(11, 303);
+            this.btExec.Name = "btExec";
+            this.btExec.Size = new System.Drawing.Size(76, 66);
+            this.btExec.TabIndex = 7;
+            this.btExec.UseVisualStyleBackColor = true;
+            this.btExec.Click += new System.EventHandler(this.btExec_Click);
+            // 
             // timer1
             // 
             this.timer1.Interval = 1000;
@@ -332,6 +358,17 @@
             this.cbSerial.Name = "cbSerial";
             this.cbSerial.Size = new System.Drawing.Size(162, 22);
             this.cbSerial.TabIndex = 1;
+            // 
+            // picConn
+            // 
+            this.picConn.Enabled = false;
+            this.picConn.Image = global::MotorCtl.Properties.Resources.connect;
+            this.picConn.Location = new System.Drawing.Point(6, 151);
+            this.picConn.Name = "picConn";
+            this.picConn.Size = new System.Drawing.Size(34, 34);
+            this.picConn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picConn.TabIndex = 9;
+            this.picConn.TabStop = false;
             // 
             // numPortNo
             // 
@@ -389,6 +426,32 @@
             this.cbInterface.Name = "cbInterface";
             this.cbInterface.Size = new System.Drawing.Size(167, 25);
             this.cbInterface.TabIndex = 0;
+            // 
+            // btnDisconnect
+            // 
+            this.btnDisconnect.BackgroundImage = global::MotorCtl.Properties.Resources.connect21;
+            this.btnDisconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDisconnect.Enabled = false;
+            this.btnDisconnect.Location = new System.Drawing.Point(118, 142);
+            this.btnDisconnect.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDisconnect.Name = "btnDisconnect";
+            this.btnDisconnect.Size = new System.Drawing.Size(56, 49);
+            this.btnDisconnect.TabIndex = 8;
+            this.btnDisconnect.UseVisualStyleBackColor = true;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
+            // 
+            // btConnect
+            // 
+            this.btConnect.BackgroundImage = global::MotorCtl.Properties.Resources.connect2;
+            this.btConnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btConnect.Location = new System.Drawing.Point(54, 142);
+            this.btConnect.Margin = new System.Windows.Forms.Padding(4);
+            this.btConnect.Name = "btConnect";
+            this.btConnect.Size = new System.Drawing.Size(56, 49);
+            this.btConnect.TabIndex = 7;
+            this.btConnect.Tag = "button";
+            this.btConnect.UseVisualStyleBackColor = true;
+            this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
             // 
             // tcpip
             // 
@@ -582,19 +645,6 @@
             this.grpVal.TabStop = false;
             this.grpVal.Text = "数据显示";
             // 
-            // btExec
-            // 
-            this.btExec.BackgroundImage = global::MotorCtl.Properties.Resources.start256;
-            this.btExec.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btExec.Enabled = false;
-            this.btExec.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btExec.Location = new System.Drawing.Point(11, 303);
-            this.btExec.Name = "btExec";
-            this.btExec.Size = new System.Drawing.Size(76, 66);
-            this.btExec.TabIndex = 7;
-            this.btExec.UseVisualStyleBackColor = true;
-            this.btExec.Click += new System.EventHandler(this.btExec_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MotorCtl.Properties.Resources.idsse;
@@ -604,56 +654,6 @@
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
-            // picConn
-            // 
-            this.picConn.Enabled = false;
-            this.picConn.Image = global::MotorCtl.Properties.Resources.connect;
-            this.picConn.Location = new System.Drawing.Point(6, 151);
-            this.picConn.Name = "picConn";
-            this.picConn.Size = new System.Drawing.Size(34, 34);
-            this.picConn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picConn.TabIndex = 9;
-            this.picConn.TabStop = false;
-            // 
-            // btnDisconnect
-            // 
-            this.btnDisconnect.BackgroundImage = global::MotorCtl.Properties.Resources.connect21;
-            this.btnDisconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnDisconnect.Enabled = false;
-            this.btnDisconnect.Location = new System.Drawing.Point(118, 142);
-            this.btnDisconnect.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDisconnect.Name = "btnDisconnect";
-            this.btnDisconnect.Size = new System.Drawing.Size(56, 49);
-            this.btnDisconnect.TabIndex = 8;
-            this.btnDisconnect.UseVisualStyleBackColor = true;
-            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
-            // 
-            // btConnect
-            // 
-            this.btConnect.BackgroundImage = global::MotorCtl.Properties.Resources.connect2;
-            this.btConnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btConnect.Location = new System.Drawing.Point(54, 142);
-            this.btConnect.Margin = new System.Windows.Forms.Padding(4);
-            this.btConnect.Name = "btConnect";
-            this.btConnect.Size = new System.Drawing.Size(56, 49);
-            this.btConnect.TabIndex = 7;
-            this.btConnect.Tag = "button";
-            this.btConnect.UseVisualStyleBackColor = true;
-            this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
-            // 
-            // btnSupend
-            // 
-            this.btnSupend.BackgroundImage = global::MotorCtl.Properties.Resources.pause;
-            this.btnSupend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSupend.Enabled = false;
-            this.btnSupend.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSupend.Location = new System.Drawing.Point(102, 303);
-            this.btnSupend.Name = "btnSupend";
-            this.btnSupend.Size = new System.Drawing.Size(68, 66);
-            this.btnSupend.TabIndex = 8;
-            this.btnSupend.UseVisualStyleBackColor = true;
-            this.btnSupend.Click += new System.EventHandler(this.btnSupend_Click);
-            // 
             // btClose
             // 
             this.btClose.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -661,10 +661,10 @@
             this.btClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btClose.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btClose.ForeColor = System.Drawing.Color.MediumVioletRed;
-            this.btClose.Location = new System.Drawing.Point(580, 6);
+            this.btClose.Location = new System.Drawing.Point(580, 13);
             this.btClose.Margin = new System.Windows.Forms.Padding(4);
             this.btClose.Name = "btClose";
-            this.btClose.Size = new System.Drawing.Size(63, 59);
+            this.btClose.Size = new System.Drawing.Size(51, 47);
             this.btClose.TabIndex = 3;
             this.btClose.UseVisualStyleBackColor = false;
             this.btClose.Click += new System.EventHandler(this.btClose_Click);
@@ -701,6 +701,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numStartAdr)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picConn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPortNo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridData)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -710,7 +711,6 @@
             this.groupBox5.ResumeLayout(false);
             this.grpVal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picConn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
