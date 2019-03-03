@@ -97,6 +97,14 @@
   <ItemGroup>
     <Content Include="EARST_20070731A_PNG13.ico" />
     <Content Include="modbus2.ico" />
+    <None Include="Resources\pause.png" />
+    <None Include="Resources\start256.png" />
+    <None Include="Resources\system-log-out.png" />
+    <None Include="Resources\connect2.png" />
+    <None Include="Resources\connect.png" />
+    <None Include="Resources\exit.jpg" />
+    <None Include="Resources\net_discon.jpg" />
+    <None Include="Resources\net_con.jpg" />
     <None Include="Resources\connect.jpg" />
     <None Include="Resources\connect.gif" />
   </ItemGroup>

@@ -22,7 +22,7 @@ namespace MotorCtl
         private ushort m_nAddr;
         private ushort m_nLength;
         private bool IsConnect = false;
-        private string strFmtByte ;
+        private string strFmtByte = "D" ;
         private int nTx, nRx;
         private int nFailCounter;
         private int[]   lsNum;
@@ -193,10 +193,11 @@ namespace MotorCtl
 
             if (sRes != WSMBS.Result.SUCCESS || tRes != WSMBT.Result.SUCCESS)
             {
-                if ( m_curInterface == 2 )
-                    MessageBox.Show("读控制站错误!  (" + tRes.ToString() + ")");
+                if (m_curInterface == 2)
+                    labRecv.Text = "读控制站错误!  (" + tRes.ToString() + ")";
                 else
-                    MessageBox.Show("读控制站错误!  (" + sRes.ToString() + ")");
+                    labRecv.Text = "读控制站错误!  (" + sRes.ToString() + ")";
+                labRecv.ForeColor = Color.Red;
                 picConn.Enabled = false;
             }
             else
@@ -232,7 +233,7 @@ namespace MotorCtl
                     else
                         this.gridData.Rows[no].Cells[col].Value = (m_nAddr + i).ToString() + " " + (m_nAddr + i).ToString("X") + "H ";
                     this.gridData.Rows[no].Cells[col + 1].Value = (m_nCmdNo > 1) ? reg[i].ToString(strFmtByte) : sw[i].ToString();
-
+                    this.gridData.Rows[no].Cells[col + 1].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
                     if ((i/10) % 2 == 0)
                     {
@@ -267,6 +268,7 @@ namespace MotorCtl
                     
                 }
 
+                labRecv.ForeColor = Color.Blue;
                 btnSupend.Enabled = true;
                 timer1.Interval = (int)numCycle.Value;
                 timer1.Enabled = true;
@@ -331,8 +333,7 @@ namespace MotorCtl
 
             if (strFmtByte == "D")
             {
-                rdDec.Checked = true;
-                rdHex.Checked = false;
+                ckHex.Checked = false;
             }
 
             cbInterface.SelectedIndexChanged += new EventHandler(cbInterface_SelectedIndexChanged);
@@ -472,9 +473,10 @@ namespace MotorCtl
                 picConn.Enabled = false;
                 timer1.Enabled = false;         
                 if (m_curInterface == 2)
-                    MessageBox.Show(tRes.ToString(), "Alarm", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    labRecv.Text = "  Modbus总线通信错误,故障原因: " + tRes.ToString() ;
                 else
-                    MessageBox.Show(sRes.ToString(), "Alarm", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    labRecv.Text = "  Modbus总线通信错误,故障原因: " + sRes.ToString();
+                labRecv.ForeColor = Color.Red;
                 nFailCounter = 0;
             }
 
@@ -567,16 +569,6 @@ namespace MotorCtl
             }
             labText1.Refresh();
             labText2.Refresh();            
-        }
-
-        private void rdDec_CheckedChanged(object sender, EventArgs e)
-        {
-            strFmtByte = "D";
-        }
-
-        private void rdHex_CheckedChanged(object sender, EventArgs e)
-        {
-            strFmtByte = "X";
         }
 
         private void frMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -921,6 +913,19 @@ namespace MotorCtl
             if (timer1.Enabled)
                 return;
             labText1_Click(sender, e);
+        }
+
+        private void ckHex_EnabledChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ckHex_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckHex.Checked)
+                strFmtByte = "X4";
+            else
+                strFmtByte = "D";
         }
     }
 }

@@ -31,24 +31,19 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frMain));
             this.serial = new WSMBS.WSMBSControl(this.components);
-            this.btExec = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnSupend = new System.Windows.Forms.Button();
-            this.picConn = new System.Windows.Forms.PictureBox();
+            this.ckHex = new System.Windows.Forms.CheckBox();
             this.lstCmd = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
             this.numStation = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.rdHex = new System.Windows.Forms.RadioButton();
-            this.rdDec = new System.Windows.Forms.RadioButton();
             this.numCycle = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.numCount = new System.Windows.Forms.NumericUpDown();
             this.numStartAdr = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnDisconnect = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbBaudrate = new System.Windows.Forms.ComboBox();
@@ -58,7 +53,6 @@
             this.labText2 = new System.Windows.Forms.Label();
             this.labText1 = new System.Windows.Forms.Label();
             this.cbInterface = new System.Windows.Forms.ComboBox();
-            this.btConnect = new System.Windows.Forms.Button();
             this.tcpip = new WSMBT.WSMBTControl(this.components);
             this.gridData = new System.Windows.Forms.DataGridView();
             this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,8 +64,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.labTx = new System.Windows.Forms.Label();
-            this.btClose = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbCSVFile = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.ckDispAlais = new System.Windows.Forms.CheckBox();
@@ -81,8 +73,14 @@
             this.labSend = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.grpVal = new System.Windows.Forms.GroupBox();
+            this.btExec = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picConn = new System.Windows.Forms.PictureBox();
+            this.btnDisconnect = new System.Windows.Forms.Button();
+            this.btConnect = new System.Windows.Forms.Button();
+            this.btnSupend = new System.Windows.Forms.Button();
+            this.btClose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picConn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCycle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCount)).BeginInit();
@@ -91,10 +89,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPortNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridData)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.grpVal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picConn)).BeginInit();
             this.SuspendLayout();
             // 
             // serial
@@ -110,29 +109,15 @@
             this.serial.RTSEnable = false;
             this.serial.StopBits = 1;
             // 
-            // btExec
-            // 
-            this.btExec.Enabled = false;
-            this.btExec.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btExec.Location = new System.Drawing.Point(66, 320);
-            this.btExec.Name = "btExec";
-            this.btExec.Size = new System.Drawing.Size(88, 37);
-            this.btExec.TabIndex = 7;
-            this.btExec.Text = "开始[&A]";
-            this.btExec.UseVisualStyleBackColor = true;
-            this.btExec.Click += new System.EventHandler(this.btExec_Click);
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ckHex);
             this.groupBox1.Controls.Add(this.btnSupend);
-            this.groupBox1.Controls.Add(this.picConn);
             this.groupBox1.Controls.Add(this.lstCmd);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.numStation);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.rdHex);
-            this.groupBox1.Controls.Add(this.rdDec);
             this.groupBox1.Controls.Add(this.numCycle);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.numCount);
@@ -141,35 +126,24 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btExec);
             this.groupBox1.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 198);
+            this.groupBox1.Location = new System.Drawing.Point(12, 216);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(181, 404);
+            this.groupBox1.Size = new System.Drawing.Size(181, 386);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "寄存器";
             // 
-            // btnSupend
+            // ckHex
             // 
-            this.btnSupend.Enabled = false;
-            this.btnSupend.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSupend.Location = new System.Drawing.Point(66, 361);
-            this.btnSupend.Name = "btnSupend";
-            this.btnSupend.Size = new System.Drawing.Size(88, 37);
-            this.btnSupend.TabIndex = 8;
-            this.btnSupend.Text = "暂停[&T]";
-            this.btnSupend.UseVisualStyleBackColor = true;
-            this.btnSupend.Click += new System.EventHandler(this.btnSupend_Click);
-            // 
-            // picConn
-            // 
-            this.picConn.Enabled = false;
-            this.picConn.Image = global::MotorCtl.Properties.Resources.connect;
-            this.picConn.Location = new System.Drawing.Point(10, 326);
-            this.picConn.Name = "picConn";
-            this.picConn.Size = new System.Drawing.Size(34, 34);
-            this.picConn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picConn.TabIndex = 9;
-            this.picConn.TabStop = false;
+            this.ckHex.AutoSize = true;
+            this.ckHex.Location = new System.Drawing.Point(95, 224);
+            this.ckHex.Name = "ckHex";
+            this.ckHex.Size = new System.Drawing.Size(51, 21);
+            this.ckHex.TabIndex = 15;
+            this.ckHex.Text = "Hex";
+            this.ckHex.UseVisualStyleBackColor = true;
+            this.ckHex.CheckedChanged += new System.EventHandler(this.ckHex_CheckedChanged);
+            this.ckHex.EnabledChanged += new System.EventHandler(this.ckHex_EnabledChanged);
             // 
             // lstCmd
             // 
@@ -180,7 +154,7 @@
             "0x02 读离散输入",
             "0x03 读保持寄存器",
             "0x04 读输入寄存器"});
-            this.lstCmd.Location = new System.Drawing.Point(16, 79);
+            this.lstCmd.Location = new System.Drawing.Point(16, 68);
             this.lstCmd.Name = "lstCmd";
             this.lstCmd.Size = new System.Drawing.Size(147, 72);
             this.lstCmd.TabIndex = 1;
@@ -190,7 +164,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 56);
+            this.label8.Location = new System.Drawing.Point(13, 49);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(80, 17);
             this.label8.TabIndex = 14;
@@ -198,7 +172,7 @@
             // 
             // numStation
             // 
-            this.numStation.Location = new System.Drawing.Point(107, 23);
+            this.numStation.Location = new System.Drawing.Point(100, 20);
             this.numStation.Maximum = new decimal(new int[] {
             120,
             0,
@@ -216,7 +190,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 25);
+            this.label5.Location = new System.Drawing.Point(15, 24);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 17);
             this.label5.TabIndex = 13;
@@ -225,41 +199,15 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 247);
+            this.label4.Location = new System.Drawing.Point(13, 226);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 17);
             this.label4.TabIndex = 12;
             this.label4.Text = "数据格式:";
             // 
-            // rdHex
-            // 
-            this.rdHex.AutoSize = true;
-            this.rdHex.Checked = true;
-            this.rdHex.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdHex.Location = new System.Drawing.Point(93, 266);
-            this.rdHex.Name = "rdHex";
-            this.rdHex.Size = new System.Drawing.Size(73, 18);
-            this.rdHex.TabIndex = 5;
-            this.rdHex.TabStop = true;
-            this.rdHex.Text = "十六进制";
-            this.rdHex.UseVisualStyleBackColor = true;
-            this.rdHex.CheckedChanged += new System.EventHandler(this.rdHex_CheckedChanged);
-            // 
-            // rdDec
-            // 
-            this.rdDec.AutoSize = true;
-            this.rdDec.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdDec.Location = new System.Drawing.Point(93, 242);
-            this.rdDec.Name = "rdDec";
-            this.rdDec.Size = new System.Drawing.Size(61, 18);
-            this.rdDec.TabIndex = 4;
-            this.rdDec.Text = "十进制";
-            this.rdDec.UseVisualStyleBackColor = true;
-            this.rdDec.CheckedChanged += new System.EventHandler(this.rdDec_CheckedChanged);
-            // 
             // numCycle
             // 
-            this.numCycle.Location = new System.Drawing.Point(101, 290);
+            this.numCycle.Location = new System.Drawing.Point(95, 257);
             this.numCycle.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -283,7 +231,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 292);
+            this.label3.Location = new System.Drawing.Point(13, 264);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 17);
             this.label3.TabIndex = 9;
@@ -291,7 +239,7 @@
             // 
             // numCount
             // 
-            this.numCount.Location = new System.Drawing.Point(93, 205);
+            this.numCount.Location = new System.Drawing.Point(95, 190);
             this.numCount.Maximum = new decimal(new int[] {
             120,
             0,
@@ -308,7 +256,7 @@
             // 
             // numStartAdr
             // 
-            this.numStartAdr.Location = new System.Drawing.Point(93, 165);
+            this.numStartAdr.Location = new System.Drawing.Point(95, 155);
             this.numStartAdr.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -326,7 +274,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 207);
+            this.label2.Location = new System.Drawing.Point(13, 193);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 17);
             this.label2.TabIndex = 5;
@@ -335,23 +283,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 167);
+            this.label1.Location = new System.Drawing.Point(13, 159);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "起始地址:";
-            // 
-            // btnDisconnect
-            // 
-            this.btnDisconnect.Enabled = false;
-            this.btnDisconnect.Location = new System.Drawing.Point(99, 130);
-            this.btnDisconnect.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDisconnect.Name = "btnDisconnect";
-            this.btnDisconnect.Size = new System.Drawing.Size(75, 37);
-            this.btnDisconnect.TabIndex = 8;
-            this.btnDisconnect.Text = "断开[&D]";
-            this.btnDisconnect.UseVisualStyleBackColor = true;
-            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
             // timer1
             // 
@@ -362,6 +298,7 @@
             // 
             this.groupBox2.Controls.Add(this.cbBaudrate);
             this.groupBox2.Controls.Add(this.cbSerial);
+            this.groupBox2.Controls.Add(this.picConn);
             this.groupBox2.Controls.Add(this.numPortNo);
             this.groupBox2.Controls.Add(this.txtIPAdr);
             this.groupBox2.Controls.Add(this.labText2);
@@ -372,7 +309,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(8, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(185, 180);
+            this.groupBox2.Size = new System.Drawing.Size(185, 198);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "通信端口参数";
@@ -381,7 +318,7 @@
             // 
             this.cbBaudrate.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbBaudrate.FormattingEnabled = true;
-            this.cbBaudrate.Location = new System.Drawing.Point(70, 95);
+            this.cbBaudrate.Location = new System.Drawing.Point(69, 111);
             this.cbBaudrate.Name = "cbBaudrate";
             this.cbBaudrate.Size = new System.Drawing.Size(105, 27);
             this.cbBaudrate.TabIndex = 5;
@@ -391,14 +328,14 @@
             // 
             this.cbSerial.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSerial.FormattingEnabled = true;
-            this.cbSerial.Location = new System.Drawing.Point(69, 64);
+            this.cbSerial.Location = new System.Drawing.Point(14, 76);
             this.cbSerial.Name = "cbSerial";
-            this.cbSerial.Size = new System.Drawing.Size(106, 22);
+            this.cbSerial.Size = new System.Drawing.Size(162, 22);
             this.cbSerial.TabIndex = 1;
             // 
             // numPortNo
             // 
-            this.numPortNo.Location = new System.Drawing.Point(70, 98);
+            this.numPortNo.Location = new System.Drawing.Point(70, 112);
             this.numPortNo.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -415,16 +352,16 @@
             // 
             // txtIPAdr
             // 
-            this.txtIPAdr.Location = new System.Drawing.Point(70, 64);
+            this.txtIPAdr.Location = new System.Drawing.Point(14, 75);
             this.txtIPAdr.Name = "txtIPAdr";
-            this.txtIPAdr.Size = new System.Drawing.Size(104, 24);
+            this.txtIPAdr.Size = new System.Drawing.Size(162, 24);
             this.txtIPAdr.TabIndex = 2;
             this.txtIPAdr.Text = "127.0.0.1";
             // 
             // labText2
             // 
             this.labText2.AutoSize = true;
-            this.labText2.Location = new System.Drawing.Point(11, 100);
+            this.labText2.Location = new System.Drawing.Point(7, 114);
             this.labText2.Name = "labText2";
             this.labText2.Size = new System.Drawing.Size(72, 17);
             this.labText2.TabIndex = 8;
@@ -434,7 +371,7 @@
             // 
             this.labText1.AutoSize = true;
             this.labText1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.labText1.Location = new System.Drawing.Point(11, 67);
+            this.labText1.Location = new System.Drawing.Point(7, 55);
             this.labText1.Name = "labText1";
             this.labText1.Size = new System.Drawing.Size(72, 17);
             this.labText1.TabIndex = 7;
@@ -448,22 +385,10 @@
             "Modubs RTU",
             "Modbus ASCII",
             "Modbus TCP/IP"});
-            this.cbInterface.Location = new System.Drawing.Point(7, 24);
+            this.cbInterface.Location = new System.Drawing.Point(7, 23);
             this.cbInterface.Name = "cbInterface";
             this.cbInterface.Size = new System.Drawing.Size(167, 25);
             this.cbInterface.TabIndex = 0;
-            // 
-            // btConnect
-            // 
-            this.btConnect.Location = new System.Drawing.Point(7, 130);
-            this.btConnect.Margin = new System.Windows.Forms.Padding(4);
-            this.btConnect.Name = "btConnect";
-            this.btConnect.Size = new System.Drawing.Size(77, 37);
-            this.btConnect.TabIndex = 7;
-            this.btConnect.Tag = "button";
-            this.btConnect.Text = "连接[&C]";
-            this.btConnect.UseVisualStyleBackColor = true;
-            this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
             // 
             // tcpip
             // 
@@ -530,12 +455,12 @@
             // labRx
             // 
             this.labRx.AutoSize = true;
-            this.labRx.Location = new System.Drawing.Point(58, 77);
+            this.labRx.Location = new System.Drawing.Point(14, 80);
             this.labRx.Name = "labRx";
             this.labRx.Size = new System.Drawing.Size(14, 14);
             this.labRx.TabIndex = 13;
             this.labRx.Text = "0";
-            this.labRx.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labRx.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label7
             // 
@@ -558,50 +483,27 @@
             // labTx
             // 
             this.labTx.AutoSize = true;
-            this.labTx.Location = new System.Drawing.Point(60, 36);
+            this.labTx.Location = new System.Drawing.Point(14, 39);
             this.labTx.Name = "labTx";
             this.labTx.Size = new System.Drawing.Size(14, 14);
             this.labTx.TabIndex = 12;
             this.labTx.Text = "0";
-            this.labTx.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // btClose
-            // 
-            this.btClose.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btClose.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btClose.ForeColor = System.Drawing.Color.MediumVioletRed;
-            this.btClose.Location = new System.Drawing.Point(557, 22);
-            this.btClose.Margin = new System.Windows.Forms.Padding(4);
-            this.btClose.Name = "btClose";
-            this.btClose.Size = new System.Drawing.Size(93, 30);
-            this.btClose.TabIndex = 3;
-            this.btClose.Text = "退出[&E]";
-            this.btClose.UseVisualStyleBackColor = false;
-            this.btClose.Click += new System.EventHandler(this.btClose_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::MotorCtl.Properties.Resources.idsse;
-            this.pictureBox1.Location = new System.Drawing.Point(8, 614);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(91, 95);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
+            this.labTx.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cbCSVFile
             // 
             this.cbCSVFile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCSVFile.FormattingEnabled = true;
-            this.cbCSVFile.Location = new System.Drawing.Point(181, 15);
+            this.cbCSVFile.Location = new System.Drawing.Point(161, 16);
             this.cbCSVFile.Name = "cbCSVFile";
-            this.cbCSVFile.Size = new System.Drawing.Size(140, 25);
+            this.cbCSVFile.Size = new System.Drawing.Size(176, 25);
             this.cbCSVFile.TabIndex = 1;
             this.cbCSVFile.SelectedIndexChanged += new System.EventHandler(this.cbCSVFile_SelectedIndexChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(77, 20);
+            this.label9.Location = new System.Drawing.Point(81, 20);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 17);
             this.label9.TabIndex = 2;
@@ -610,7 +512,7 @@
             // ckDispAlais
             // 
             this.ckDispAlais.AutoSize = true;
-            this.ckDispAlais.Location = new System.Drawing.Point(12, 21);
+            this.ckDispAlais.Location = new System.Drawing.Point(12, 20);
             this.ckDispAlais.Name = "ckDispAlais";
             this.ckDispAlais.Size = new System.Drawing.Size(59, 21);
             this.ckDispAlais.TabIndex = 15;
@@ -639,12 +541,13 @@
             this.groupBox5.Size = new System.Drawing.Size(646, 107);
             this.groupBox5.TabIndex = 17;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "接收帧：";
+            this.groupBox5.Text = "通信";
             // 
             // labRecv
             // 
             this.labRecv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labRecv.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labRecv.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.labRecv.Location = new System.Drawing.Point(3, 18);
             this.labRecv.Name = "labRecv";
             this.labRecv.Size = new System.Drawing.Size(640, 86);
@@ -679,6 +582,93 @@
             this.grpVal.TabStop = false;
             this.grpVal.Text = "数据显示";
             // 
+            // btExec
+            // 
+            this.btExec.BackgroundImage = global::MotorCtl.Properties.Resources.start256;
+            this.btExec.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btExec.Enabled = false;
+            this.btExec.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btExec.Location = new System.Drawing.Point(11, 303);
+            this.btExec.Name = "btExec";
+            this.btExec.Size = new System.Drawing.Size(76, 66);
+            this.btExec.TabIndex = 7;
+            this.btExec.UseVisualStyleBackColor = true;
+            this.btExec.Click += new System.EventHandler(this.btExec_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MotorCtl.Properties.Resources.idsse;
+            this.pictureBox1.Location = new System.Drawing.Point(8, 614);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(91, 95);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
+            // picConn
+            // 
+            this.picConn.Enabled = false;
+            this.picConn.Image = global::MotorCtl.Properties.Resources.connect;
+            this.picConn.Location = new System.Drawing.Point(6, 151);
+            this.picConn.Name = "picConn";
+            this.picConn.Size = new System.Drawing.Size(34, 34);
+            this.picConn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picConn.TabIndex = 9;
+            this.picConn.TabStop = false;
+            // 
+            // btnDisconnect
+            // 
+            this.btnDisconnect.BackgroundImage = global::MotorCtl.Properties.Resources.connect21;
+            this.btnDisconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDisconnect.Enabled = false;
+            this.btnDisconnect.Location = new System.Drawing.Point(118, 142);
+            this.btnDisconnect.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDisconnect.Name = "btnDisconnect";
+            this.btnDisconnect.Size = new System.Drawing.Size(56, 49);
+            this.btnDisconnect.TabIndex = 8;
+            this.btnDisconnect.UseVisualStyleBackColor = true;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
+            // 
+            // btConnect
+            // 
+            this.btConnect.BackgroundImage = global::MotorCtl.Properties.Resources.connect2;
+            this.btConnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btConnect.Location = new System.Drawing.Point(54, 142);
+            this.btConnect.Margin = new System.Windows.Forms.Padding(4);
+            this.btConnect.Name = "btConnect";
+            this.btConnect.Size = new System.Drawing.Size(56, 49);
+            this.btConnect.TabIndex = 7;
+            this.btConnect.Tag = "button";
+            this.btConnect.UseVisualStyleBackColor = true;
+            this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
+            // 
+            // btnSupend
+            // 
+            this.btnSupend.BackgroundImage = global::MotorCtl.Properties.Resources.pause;
+            this.btnSupend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSupend.Enabled = false;
+            this.btnSupend.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupend.Location = new System.Drawing.Point(102, 303);
+            this.btnSupend.Name = "btnSupend";
+            this.btnSupend.Size = new System.Drawing.Size(68, 66);
+            this.btnSupend.TabIndex = 8;
+            this.btnSupend.UseVisualStyleBackColor = true;
+            this.btnSupend.Click += new System.EventHandler(this.btnSupend_Click);
+            // 
+            // btClose
+            // 
+            this.btClose.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btClose.BackgroundImage = global::MotorCtl.Properties.Resources.system_log_out;
+            this.btClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btClose.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btClose.ForeColor = System.Drawing.Color.MediumVioletRed;
+            this.btClose.Location = new System.Drawing.Point(580, 6);
+            this.btClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btClose.Name = "btClose";
+            this.btClose.Size = new System.Drawing.Size(63, 59);
+            this.btClose.TabIndex = 3;
+            this.btClose.UseVisualStyleBackColor = false;
+            this.btClose.Click += new System.EventHandler(this.btClose_Click);
+            // 
             // frMain
             // 
             this.AcceptButton = this.btExec;
@@ -705,7 +695,6 @@
             this.Load += new System.EventHandler(this.frMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picConn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCycle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCount)).EndInit();
@@ -716,11 +705,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridData)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.grpVal.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picConn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -750,8 +740,6 @@
         private System.Windows.Forms.ComboBox cbSerial;
         private System.Windows.Forms.NumericUpDown numCycle;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton rdHex;
-        private System.Windows.Forms.RadioButton rdDec;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numStation;
         private System.Windows.Forms.Label label5;
@@ -779,6 +767,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value2;
+        private System.Windows.Forms.CheckBox ckHex;
     }
 }
 
