@@ -710,8 +710,10 @@ namespace MotorCtl
             if (ptr_gp > 9)
                 return ;
 
+            nIndex = e.RowIndex * 2 + e.ColumnIndex/2;
+
             for(int i=0 ; i < ptr_gp ;i++)
-                if ( e.RowIndex == agpAdr[i])
+                if ( nIndex == agpAdr[i])
                     return ;
 
 
