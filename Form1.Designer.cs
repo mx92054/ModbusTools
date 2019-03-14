@@ -147,7 +147,6 @@
             // 
             // btnSupend
             // 
-            this.btnSupend.BackgroundImage = global::MotorCtl.Properties.Resources.pause;
             this.btnSupend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSupend.Enabled = false;
             this.btnSupend.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -155,6 +154,7 @@
             this.btnSupend.Name = "btnSupend";
             this.btnSupend.Size = new System.Drawing.Size(68, 66);
             this.btnSupend.TabIndex = 8;
+            this.btnSupend.Text = "暂停";
             this.btnSupend.UseVisualStyleBackColor = true;
             this.btnSupend.Click += new System.EventHandler(this.btnSupend_Click);
             // 
@@ -304,7 +304,6 @@
             // 
             // btExec
             // 
-            this.btExec.BackgroundImage = global::MotorCtl.Properties.Resources.start256;
             this.btExec.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btExec.Enabled = false;
             this.btExec.Font = new System.Drawing.Font("Consolas", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -312,6 +311,7 @@
             this.btExec.Name = "btExec";
             this.btExec.Size = new System.Drawing.Size(76, 66);
             this.btExec.TabIndex = 7;
+            this.btExec.Text = "扫描";
             this.btExec.UseVisualStyleBackColor = true;
             this.btExec.Click += new System.EventHandler(this.btExec_Click);
             // 
@@ -429,7 +429,6 @@
             // 
             // btnDisconnect
             // 
-            this.btnDisconnect.BackgroundImage = global::MotorCtl.Properties.Resources.connect21;
             this.btnDisconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnDisconnect.Enabled = false;
             this.btnDisconnect.Location = new System.Drawing.Point(118, 142);
@@ -437,12 +436,12 @@
             this.btnDisconnect.Name = "btnDisconnect";
             this.btnDisconnect.Size = new System.Drawing.Size(56, 49);
             this.btnDisconnect.TabIndex = 8;
+            this.btnDisconnect.Text = "断开";
             this.btnDisconnect.UseVisualStyleBackColor = true;
             this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
             // btConnect
             // 
-            this.btConnect.BackgroundImage = global::MotorCtl.Properties.Resources.connect2;
             this.btConnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btConnect.Location = new System.Drawing.Point(54, 142);
             this.btConnect.Margin = new System.Windows.Forms.Padding(4);
@@ -450,6 +449,7 @@
             this.btConnect.Size = new System.Drawing.Size(56, 49);
             this.btConnect.TabIndex = 7;
             this.btConnect.Tag = "button";
+            this.btConnect.Text = "连接";
             this.btConnect.UseVisualStyleBackColor = true;
             this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
             // 
